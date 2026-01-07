@@ -1,0 +1,294 @@
+/* --- 1. Configuración General y Fondo --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Tipografía limpia sans-serif */
+    background-color: #0d0d0d; /* Fondo casi negro */
+    color: #ffffff; /* Texto blanco */
+    height: 100vh; /* Altura completa de la ventana */
+     /*overflow: hidden; Evita el scroll si quieres un efecto de pantalla fija */
+}
+
+/* El contenedor principal */
+#hero {
+    height: 100%;
+    width: 100%;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    /* Margen alrededor de toda la pantalla */
+    position: relative; /* Necesario para posicionar elementos absolutos dentro */
+    background-image: url(../Frame_1.jpg);
+    background-size: cover; /* Cubre toda la ventana, escalando si es necesario */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat;
+    /* IMAGEN DE FONDO (Opcional): Descomenta y pon tu ruta si tienes la foto del cielo */
+    /* background: url('tu-fondo-ciudad.jpg') no-repeat center center/cover; */
+}
+
+/* --- 2. Barra de Navegación (Navbar) --- */
+#navbar {
+    display: flex;
+    justify-content: space-between; /* Logo a la izq, Menú a la der */
+    align-items: center;
+    margin-bottom: 60px; /* Separación con el título gigante */
+}
+
+.logo {
+    height: 40px; /* Ajusta según tu logo real */
+    width: auto;
+    filter: invert(1); /* Truco: si tu logo es negro, esto lo vuelve blanco */
+}
+
+.menu {
+    display: flex;
+    gap: 4rem; /* Espacio amplio entre enlaces como en el diseño */
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    /* --- LA SOLUCIÓN ANTI-BAILE --- */
+    
+    /* 1. Hacemos que el enlace se comporte como una caja para respetar medidas */
+    display: inline-block; 
+    
+    /* 2. Definimos el espacio del óvalo DESDE EL PRINCIPIO (no solo en hover) */
+    padding: 10px 30px; 
+    
+    /* 3. Borde invisible: Ocupa 1px de espacio pero no se ve. 
+       Así, cuando hagas hover, el espacio ya está reservado. */
+    border: 1px solid transparent; 
+    
+    /* 4. Forma de píldora (óvalo) */
+    border-radius: 50px; 
+    
+    /* 5. Transición suave */
+    transition: border-color 0.3s ease; 
+}
+
+/* Estado HOVER (al pasar el ratón) */
+.menu a:hover {
+    /* Lo único que cambiamos es el color. El tamaño NO cambia. */
+    border-color: #ffffff; 
+}
+
+/* --- 3. Sección del Título Gigante (H1 + H3) --- */
+#Titulo {
+    display: flex; /* Ponemos el H1 y el H3 lado a lado */
+    align-items: center; /* Alineados al centro verticalmente */
+    justify-content: space-between; /* Uno a cada extremo */
+    height: 60vh; /* Ocupa gran parte de la altura central */
+}
+
+#Titulo h1 {
+    font-size: 20vw; /* TAMAÑO GIGANTE relativo al ancho de pantalla */
+    line-height: 0.8; /* Reduce el espacio entre líneas */
+    text-transform: uppercase;
+    
+    /* Truco para que rompa la línea si es necesario */
+    max-width: 70%; 
+    word-wrap: break-word;
+}
+
+/* Contenedor para el texto de la derecha (H3 + Logo pequeño) */
+/* Nota: En tu HTML el h3 y la img están sueltos, el CSS asume que están tras el H1 */
+#Titulo h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: left;
+    max-width: 200px;
+    line-height: 1.4;
+}
+
+/* Si la segunda imagen .logo está dentro de #Titulo, la movemos debajo del h3 */
+#Titulo .logo {
+    display: block;
+    margin-top: 20px;
+    height: 50px; /* Tamaño del icono circular */
+}
+
+/* Agrupamos visualmente H3 e imagen a la derecha usando Flex en el padre o márgenes */
+/* Dado tu HTML, sugiero usar margen automático para empujar el contenido derecho */
+#Titulo > *:not(h1) {
+    margin-left: auto; /* Esto empuja todo lo que no sea el H1 a la derecha */
+}
+
+
+/* --- 4. Submenú Inferior Izquierda (Flechas) --- */
+#subMenu {
+    position: absolute; /* Lo fijamos abajo a la izquierda */
+    bottom: 40px;
+    left: 40px;
+}
+
+.subMenuItems {
+    list-style: none;
+}
+
+.subMenuItems li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Espacio entre items */
+}
+
+.subMenuItems a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 15px; /* Espacio entre flecha y texto */
+    letter-spacing: 1px;
+}
+
+/* Estilo para las flechas */
+.icono_flecha {
+    width: 40px; /* Flechas largas */
+    height: auto;
+    filter: invert(1); /* Vuelve blancas las flechas si son imágenes negras */
+}
+/*
+
+
+
+about me
+
+
+
+
+
+*/
+/*
+
+
+
+skills
+
+
+
+
+
+*/
+/*
+
+
+
+projects
+
+
+
+
+
+*/
+/* --- Sección de Proyectos --- */
+#projects {
+    padding: 4rem 2rem; /* Espacio arriba/abajo y a los lados */
+    /* Si tu web es oscura, quizás quieras un fondo gris oscuro aquí, 
+       pero basándome en la imagen roja: */
+    background-color: #dbd5d5; 
+}
+
+#projects h2 {
+    color: #ffffff;      /* Título en blanco para contrastar con el fondo */
+    font-size: 4.5rem;   /* Tamaño grande */
+    margin-bottom: 3rem; /* Separación con las tarjetas */
+    text-transform: uppercase;
+    justify-content: center;
+    letter-spacing: 2px;
+}
+/* --- Configuración General del Bloque --- */
+#projects {
+    background-color: #F4F4F4; /* Fondo gris claro como en la imagen */
+    padding: 40px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* 1. Título Gigante "MY PROJECTS" */
+.main-title {
+    color: #9E2A2B; /* Rojo oscuro/vino */
+    font-family: 'Arial', sans-serif; /* O una fuente sans-serif gruesa */
+    font-size: 4rem; /* Muy grande */
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    white-space: nowrap; /* Para que no se rompa la línea */
+    overflow: hidden; /* Por si quieres efecto corte */
+}
+
+/* --- Estilos de los Grupos y Líneas --- */
+.project-group {
+    /* La línea roja fina encima de cada categoría */
+    padding-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* 2. El Título de la Lista (Texto Rojo Pequeño) */
+.categoria-titulo {
+    border-top: 1px solid #D69E9E; 
+    color: #9E2A2B; /* El mismo rojo del título principal */
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* --- La Lista de Proyectos --- */
+.lista_proyecto {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 3. El Item (LI) - Contenedor flexible */
+.lista_proyecto li {
+    display: flex;          /* Pone el H3 y el P en la misma línea */
+    align-items: last baseline;  /* Alinea el texto pequeño a la base del grande (CLAVE) */
+    flex-wrap: wrap;        /* Permite que baje si no cabe en móvil */
+    margin-bottom: 10px;    /* Espacio entre proyectos */
+    gap: 15px;              /* Espacio entre el título grande y la descripción */
+}
+
+/* 4. Texto Grande (H3) - Serif */
+.lista_proyecto h3 {
+    font-family: 'Times New Roman', Times, serif; /* Fuente con remates (Serif) */
+    font-size: 3rem;       /* Tamaño muy grande */
+    font-weight: 400;      /* Normal, no negrita (las serif grandes se ven mejor así) */
+    color: #1A1A1A;        /* Negro suave */
+    margin: 0;
+    line-height: 1;        /* Altura de línea compacta */
+    text-transform: uppercase;
+}
+
+/* 5. Texto Pequeño (P) - Descripción */
+.lista_proyecto p {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Volvemos a Sans-serif */
+    font-size: 0.75rem;    /* Letra muy pequeña */
+    color: #555;           /* Gris */
+    margin: 0;
+    line-height: 1.2;      /* Líneas pegaditas */
+    max-width: 120px;      /* Fuerza el salto de línea si el texto es largo */
+}
+/*
+
+
+
+gallery
+
+
+
+
+
+*/
