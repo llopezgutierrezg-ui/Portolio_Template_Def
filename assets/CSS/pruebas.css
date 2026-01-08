@@ -1,6 +1,14 @@
 :root{
     --bg-color: #f0f0f0
 }
+@font-face{
+    font-family: 'Helvetica Neue Perso';
+    src: url('../Font/helvetica-neue-5/HelveticaNeueMedium.otf') format('opentype');
+}
+@font-face{
+    font-family: 'Helvetica Neue Perso Roman';
+    src: url('../Font/helvetica-neue-5/HelveticaNeueRoman.otf') format('opentype');
+}
 
 /* --- 1. Configuración General y Fondo --- */
 * {
@@ -19,7 +27,7 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', sans-serif; /* Tipografía limpia sans-serif */
+    font-family: 'Helvetica Neue Perso', sans-serif;
     background-color: #0d0d0d; /* Fondo casi negro */
     color: #ffffff; /* Texto blanco */
 
@@ -43,7 +51,6 @@ body {
     padding-left: 20px;
     padding-bottom: 40px;
     padding-right: 40px;
-    padding-top: 30px;
     /* Margen alrededor de toda la pantalla */
     position: relative; /* Necesario para posicionar elementos absolutos dentro */
     background-image: url(../../Frame_1.jpg);
@@ -67,11 +74,6 @@ body {
     /* 3. Centramos el título verticalmente en el espacio disponible */
     justify-content: center;   
     
-    /* Mantén tus paddings laterales, pero cuidado con el bottom */
-    padding-left: 20px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-    
     box-sizing: border-box; /* Vital para que el padding no rompa el ancho */
 }
 
@@ -92,7 +94,7 @@ body {
     align-items: center;
     
     /* Ajustamos el padding para que no se pegue a los bordes */
-    padding: 20px 40px; 
+    padding: 10px 20px; 
         
     /* Transición suave por si quieres cambiarlo con JS luego */
     transition: all 0.3s ease;
@@ -101,7 +103,7 @@ body {
 /* --- ESTADO SCROLLED (Cuando bajas) --- */
 /* Esta clase la pondrá el JavaScript automáticamente */
 #navbar.scrolled {
-    background-color: rgba(13, 13, 13, 0.75); /* Casi negro sólido */
+    background-color: rgba(137, 23, 33, 0.75); /* Casi negro sólido */
     color: var(--bg-color);
     backdrop-filter: blur(5px);              /* Efecto cristal */
 }
@@ -109,6 +111,7 @@ body {
 .logo {
     height: 40px; /* Ajusta según tu logo real */
     width: auto;
+    padding-left: 40px;
     filter: invert(1); /* Truco: si tu logo es negro, esto lo vuelve blanco */
 }
 
@@ -154,45 +157,73 @@ body {
 
 /* --- 3. Sección del Título Gigante (H1 + H3) --- */
 #Titulo {
-    display: flex; /* Ponemos el H1 y el H3 lado a lado */
-    align-items: center; /* Alineados al centro verticalmente */
-    justify-content: space-between; /* Uno a cada extremo */
-    height: 60vh; /* Ocupa gran parte de la altura central */
+    font-family: 'Helvetica Neue Perso Roman', sans-serif;
+
+    display: grid;
+    /* Columna 1: Todo el espacio libre (H1). Columna 2: Ajustada al contenido (Texto/Icono) */
+    grid-template-columns: 1fr auto; 
+    /* Dos filas: Fila 1 para el texto H3, Fila 2 para el icono */
+    grid-template-rows: auto auto;
+    
+    align-items: center; 
+    width: 100%;
+    margin-top: -80px;
 }
 
 #Titulo h1 {
-    font-size: 20rem; /* TAMAÑO GIGANTE relativo al ancho de pantalla */
-    line-height: 0.8; /* Reduce el espacio entre líneas */
+    /* El H1 se queda a la izquierda y ocupa las 2 filas de alto */
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    
+    font-family: 'Helvetica Neue Perso Roman', sans-serif;
+    font-size: 20rem; 
+    letter-spacing: 20px;
+    line-height: 0.8;
     text-transform: uppercase;
     
-    /* Truco para que rompa la línea si es necesario */
-    max-width: 70%; 
+    max-width: 100%; 
     word-wrap: break-word;
 }
 
 /* Contenedor para el texto de la derecha (H3 + Logo pequeño) */
 /* Nota: En tu HTML el h3 y la img están sueltos, el CSS asume que están tras el H1 */
-#Titulo h3 {
+#Titulo h3 { 
+    /* El Texto se va a la Columna 2, Fila 1 (Arriba) */
+    grid-column: 2;
+    grid-row: 1;
+    
+    /* Alineación a la derecha */
+    justify-self: end;
+    text-align: left;
+    align-self: end; /* Se pega a la parte baja de su celda */
+    
+    font-family: 'Helvetica Neue Perso Roman', sans-serif;
+    margin-top: 150px;
+    margin-right: 240px;
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
-    text-align: left;
     max-width: 200px;
     line-height: 1.4;
 }
 
-/* Si la segunda imagen .logo está dentro de #Titulo, la movemos debajo del h3 */
 #Titulo .logo {
+    /* El Icono se va a la Columna 2, Fila 2 (Debajo del texto) */
+    grid-column: 2;
+    grid-row: 2;
+    
+    /* Alineación a la derecha */
+    justify-self: end;
+    align-self: start; /* Se pega a la parte alta (cerca del texto) */
+    
     display: block;
     margin-top: 20px;
-    height: 50px; /* Tamaño del icono circular */
+    margin-right: 300px;
+    height: 50px; 
+    padding-left: 0; /* Quitamos el padding-left que tenías antes, ya no hace falta */
+    filter: invert(1);
 }
 
-/* Agrupamos visualmente H3 e imagen a la derecha usando Flex en el padre o márgenes */
-/* Dado tu HTML, sugiero usar margen automático para empujar el contenido derecho */
-#Titulo > *:not(h1) {
-    margin-left: auto; /* Esto empuja todo lo que no sea el H1 a la derecha */
-}
 
 
 /* --- 4. Submenú Inferior Izquierda (Flechas) --- */
@@ -213,9 +244,10 @@ body {
 }
 
 .subMenuItems a {
+    font-family: 'Helvetica Neue Perso Roman', sans-serif;
     text-decoration: none;
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     margin-left: 15px; /* Espacio entre flecha y texto */
@@ -224,7 +256,7 @@ body {
 
 /* Estilo para las flechas */
 .icono_flecha {
-    width: 40px; /* Flechas largas */
+    width: 100px; /* Flechas largas */
     height: auto;
     filter: invert(1); /* Vuelve blancas las flechas si son imágenes negras */
 }
