@@ -6,9 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pop-up Proyectos</title>
         <link rel="stylesheet" href="assets/CSS/pruebas.css">
+        <link rel="stylesheet" href="assets/CSS/Pop-ups.css">
         <script src="assets/JS/index.js"></script>
+        <script src="assets/JS/Pop-ups.js" defer></script>
     </head>
     <body>
+        <div id = "inicio"></div>
         <nav id="navbar">
             <img src="Capa_2.svg" alt="" class ="logo">
             <ul class="menu">
@@ -162,11 +165,11 @@
             <div class="project-group">
                 <h4 class="categoria-titulo">VISUAL IDENTITY DESIGN</h4>
                 <ul class="lista_proyecto">
-                    <li>
+                    <li data-id="aurea">
                         <h3>AUREA, MADRID’S UNIVERSITY OF DESIGN</h3> 
                         <p>Visual<br>identity<br>development</p>
                     </li>
-                    <li>
+                    <li data-id="azahar">
                         <h3>AZAHAR, HANDMADE JAM</h3> 
                         <p>Visual<br>Identity<br>Idealization</p>
                     </li>
@@ -178,15 +181,15 @@
                 <!-- Segundo grupo de proyectos -->
                 <h4 class="categoria-titulo">MOTION GRAPHICS</h4>
                 <ul class="lista_proyecto">
-                    <li>
+                    <li data-id="coffee-advertising">
                         <h3>COFFEE ADVERTISING</h3> 
                         <p>Character<br>& Ilustration<br>Animation</p>
                     </li>
-                    <li>
+                    <li data-id="personal-animation-trailer">
                         <h3>PERSONAL ANIMATION TRAILER</h3> 
                         <p>Visual<br>Identity<br>Idealization</p>
                     </li>
-                    <li>
+                    <li data-id="frenesi-motion">
                         <h3>FRENESÍ</h3> 
                         <p>Custom<br>Typography<br>Design</p>
                     </li>
@@ -485,5 +488,36 @@
             </form>
         </section>
         </div>
+        <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jane Developer. Built with vanilla HTML, CSS & JS.</p>
+            <a href="#inicio" class="back-to-top" aria-label="Back to top">↑</a>
+        </div>
+        </footer>
+
+        <!-- Modal for project details -->
+         <div id="modalOverlay" class="modal-overlay">
+            <div class="card">
+                <span class="close-modal">&times;</span>
+
+                <div class="card-header">
+                    <img src="" alt="Project Image">
+                </div>
+
+                <div class="card-body">
+                    <div class="tags-container"></div>
+                    
+                    <small class="card-meta">New Update</small>
+
+                    <h2>TITULO DEL PROYECTO</h2>
+                    <p>Descripción del proyecto...</p>
+                </div>
+
+                <div class="card-footer">
+                    </div>
+            </div>
+        </div>
+
+
     </body>
 </html>

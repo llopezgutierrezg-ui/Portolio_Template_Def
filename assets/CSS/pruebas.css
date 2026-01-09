@@ -20,7 +20,8 @@
 #skills-section, 
 #projects, 
 #full-portfolio-container,
-.parallax-stack {
+.parallax-stack,
+.footer {
     position: relative;  /* Obligatorio */
     z-index: 2;          /* Mayor que 0 para tapar al Hero */
     
@@ -734,19 +735,6 @@ footer
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #contact-section {
     background-color: #0d0d0d;
     color: #ffffff;
@@ -899,4 +887,44 @@ footer
     padding: 12px 30px;
     font-size: 0.9rem;
     cursor: pointer;
+}
+
+
+/*
+    
+
+
+
+
+*/
+.footer {
+  background-color: #0d0d0d;
+  padding: 40px;
+  color: #888;
+  font-size: 0.9rem;
+  /* Quitamos text-align: center porque ahora controlaremos la posición con Flexbox */
+  /* text-align: center; */ 
+}
+
+/* --- AQUÍ ESTÁ LA MAGIA --- */
+.footer .container {
+  display: flex;              /* Activa el modo flexible */
+  justify-content: space-between; /* Empuja el primer elemento al inicio y el último al final */
+  align-items: center;        /* Alinea verticalmente al centro */
+  width: 100%;                /* Asegura que ocupe todo el ancho */
+}
+
+.footer p {
+    margin: 0; /* Importante quitar el margen por defecto del párrafo para que quede alineado */
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1.5rem; /* Hacemos la flecha un poco más grande */
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #fff;
 }
