@@ -1,0 +1,323 @@
+/* =========================================
+   CONFIGURACIÓN BASE
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #111;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+#error-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  z-index: 1;
+
+  background-image: url("../Img/logo-svg.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80vh;
+}
+
+/* =========================================
+   CAPA DE DECORACIONES
+   ========================================= */
+.decorations-layer {
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  pointer-events: none;
+  z-index: 0;
+
+  /* colchón para que no invadan el centro */
+  padding: 6vh 8vw;
+}
+
+/* =========================================
+   STICKERS (TAMAÑO UNIFICADO)
+   ========================================= */
+.sticker {
+  position: absolute;
+  width: clamp(110px, 9vw, 160px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+
+  animation: float-wiggle 2.2s linear infinite;
+  will-change: transform;
+}
+
+/* =========================================
+   POSICIONES
+   ========================================= */
+
+/* Arriba */
+.s-1 {
+  top: 15%;
+  left: 10%;
+}
+
+.s-2 {
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.s-3 {
+  top: 15%;
+  right: 10%;
+}
+
+/* Medio */
+.s-4 {
+  top: 40%;
+  right: 15%;
+}
+
+.s-8 {
+  top: 40%;
+  left: 15%;
+}
+
+/* Abajo */
+.s-5 {
+  bottom: 15%;
+  right: 10%;
+}
+
+.s-6 {
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.s-7 {
+  bottom: 15%;
+  left: 10%;
+}
+
+/* =========================================
+   HEADER / MAIN / FOOTER
+   ========================================= */
+.page-top,
+.page-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.center-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.error-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.error-code {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14rem;
+  line-height: 0.8;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.home-btn {
+  display: inline-block;
+  background-color: #8b1e22;
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  pointer-events: auto;
+}
+
+.home-btn:hover {
+  background-color: #a9262b;
+}
+
+/* =========================================
+   ANIMACIÓN
+   ========================================= */
+@keyframes float-wiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-4px, 3px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate(4px, -4px) rotate(1.5deg);
+  }
+  75% {
+    transform: translate(-3px, 4px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Ritmos distintos */
+.s-1 {
+  animation-duration: 1.8s;
+}
+.s-2 {
+  animation-duration: 2.2s;
+}
+.s-3 {
+  animation-duration: 2s;
+}
+.s-4 {
+  animation-duration: 2.4s;
+}
+.s-5 {
+  animation-duration: 2.1s;
+}
+.s-6 {
+  animation-duration: 1.9s;
+}
+.s-7 {
+  animation-duration: 2.3s;
+}
+.s-8 {
+  animation-duration: 2s;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* Móvil pequeño */
+@media (max-width: 479px) {
+  #error-page {
+    padding: 20px;
+  }
+
+  .sticker {
+    display: none;
+  }
+
+  .s-6 {
+    display: block;
+    width: 70px;
+    bottom: 80px;
+    opacity: 0.5;
+  }
+
+  .error-code {
+    font-size: 6rem;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+  }
+
+  .page-top,
+  .page-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .center-text {
+    display: none;
+  }
+
+  .home-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Móvil grande */
+@media (min-width: 480px) and (max-width: 767px) {
+  .sticker {
+    display: none;
+  }
+
+  .s-2,
+  .s-6 {
+    display: block;
+    width: 90px;
+  }
+
+  .s-2 {
+    top: 80px;
+  }
+
+  .s-6 {
+    bottom: 80px;
+  }
+
+  .error-code {
+    font-size: 8rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sticker {
+    width: 100px;
+  }
+
+  .s-4,
+  .s-8 {
+    display: none;
+  }
+
+  .error-code {
+    font-size: 10rem;
+  }
+}
+
+/* Escritorio grande */
+@media (min-width: 1920px) {
+  .sticker {
+    width: 160px;
+  }
+
+  .error-code {
+    font-size: 18rem;
+  }
+}
