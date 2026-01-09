@@ -1,0 +1,250 @@
+[
+            {
+            "id": "aurea",
+            "nombre": "AUREA, MADRID’S UNIVERSITY OF DESIGN",
+            "categoria": "New update",
+            "descripcion": "Descripción de Aurea...",
+            "imagen": "ruta/a/tu/imagen_proyecto.jpg",
+            "etiquetas": ["UX/UI", "Branding"],
+            
+            "iconos": [
+                "assets/iconos/figma.png", 
+                "assets/iconos/adobe-photoshop.svg", 
+                "assets/iconos/logo-wordpress.png"
+            ]
+        },
+        {
+            "id": "azahar",
+            "nombre": "AZAHAR, HANDMADE JAM",
+            "categoria": "New update",
+            "descripcion": "Descripción de Azahar...",
+            "imagen": "ruta/a/tu/imagen_proyecto.jpg",
+            "etiquetas": ["Visual Identity", "Branding"],
+            "iconos": [
+                "assets/iconos/camera.png",
+                "assets/iconos/instagram.png"
+            ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        },
+        {
+                "id-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Imagen-Proyecto":"",
+                "Etiquetas-Proyecto":[
+                    "UX/UI",
+                    "Web Design",
+                    "Branding"
+                ],
+                "Categoría-Proyecto":"Visual identity development",
+                "Nombre-Proyecto":"AUREA, MADRID’S UNIVERSITY OF DESIGN",
+                "Descripción-Proyecto":"Aurea is a new university ",
+                "Iconos-Proyecto":[
+                    "fa-brands fa-figma",
+                    "fa-brands fa-adobe",
+                    "fa-brands fa-wordpress"
+                ]
+        }
+    
+]
