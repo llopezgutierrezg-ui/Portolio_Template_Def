@@ -357,7 +357,7 @@ about me
 #about-section {
   background-color: #f4f4f4;
   padding: 60px 40px;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue Perso";
 
   /* --- CAMBIOS PARALLAX --- */
   position: relative; /* Necesario para que el z-index funcione */
@@ -874,7 +874,7 @@ footer
 /* --- CONTENEDOR PRINCIPAL --- */
 .parallax-stack {
   background-color: var(--bg-color); /* Fondo claro para contraste */
-  padding: 0px 40px;
+  padding: 0px 40px 40px 40px;
   width: 100%;
   /* No ponemos height, la altura la dan las imágenes apiladas */
 }
@@ -1101,4 +1101,287 @@ footer
 
 .footer a:hover {
   color: #fff;
+}
+/* =========================================
+   RESPONSIVE DESIGN & HAMBURGER MENU
+   ========================================= */
+
+/* --- Estilos Base del Botón Hamburguesa (Oculto en escritorio) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 2000;
+}
+
+.hamburger span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #fff; /* Color de las líneas */
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+/* Animación de la X al abrir */
+.hamburger.active span:nth-child(1) { top: 9px; transform: rotate(135deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
+.hamburger.active span:nth-child(3) { top: 9px; transform: rotate(-135deg); }
+
+
+/* =========================================
+   TABLET Y MÓVIL (Menos de 1024px)
+   ========================================= */
+@media (max-width: 1024px) {
+    /* Ajuste general de textos gigantes */
+    #Titulo h1 { font-size: 15rem; } 
+    #projects h2 { font-size: 3.5rem; }
+    
+    /* Padding lateral más seguro */
+    #contact-section, #skills-section, #projects, #about-section {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+/* =========================================
+   TABLET (768px - Punto de ruptura del menú)
+   ========================================= */
+@media (max-width: 900px) { /* Ajustamos un poco antes de 768px para seguridad */
+    #navbar .logo{ margin-left: -45px;}
+    /* --- MENÚ HAMBURGUESA ACTIVADO --- */
+    .hamburger {
+        display: block; /* Aparece el botón */
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(13, 13, 13, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        transition: 0.4s ease;
+        padding: 0; margin: 0; z-index: 1500;
+    }
+    .menu.active { right: 0; }
+    .menu a { font-size: 1.5rem; }
+
+
+    /* --- 2. DISEÑO DEL HERO "ESTILO PÓSTER" (Como tu imagen) --- */
+    
+    #hero {
+        /* Cambiamos a Flexbox Vertical */
+        display: flex;
+        flex-direction: column;
+        
+        /* Alineamos todo a la IZQUIERDA */
+        justify-content: center; /* Centrado vertical en la pantalla */
+        align-items: flex-start; /* Todo pegado a la izquierda */
+        text-align: left;        /* Texto a la izquierda */
+        
+        padding: 0 30px; /* Margen lateral para que no toque el borde */
+        padding-top: 60px; /* Espacio para el navbar */
+        
+        height: auto; 
+        min-height: 100vh; /* Ocupa al menos toda la pantalla */
+    }
+
+    #Titulo {
+        display: block; /* Quitamos el Grid de escritorio */
+        width: 100%;
+        margin-top: 0;
+    }
+
+    #Titulo h1 {
+        /* Título GIGANTE que llena el ancho */
+        font-size: 35vw; /* Muy grande, como en tu imagen */
+        line-height: 0.8; /* Muy pegadito verticalmente */
+        margin: 0;
+        margin-left: 15px; /* Pequeño ajuste óptico para alinear con el texto de abajo */
+        margin-top: -150px;
+        width: 100%;
+    }
+
+    /* Comillas dentro del título */
+    .quote-icon { 
+        height: 0.4em; 
+        margin-left: 5px;
+    }
+
+    #Titulo h3 {
+        /* Subtítulo alineado a la izquierda debajo del título */
+        font-family: 'Helvetica Neue', Arial, sans-serif; /* O tu fuente sans-serif */
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-top: 30px; /* Separación con el título SYRAH */
+        margin-right: 0;
+        margin-left: 15px; /* Pequeño ajuste óptico para alinear con el texto de abajo */
+        
+        /* Forzamos que se comporte como bloque a la izquierda */
+        grid-column: auto;
+        justify-self: start;
+        text-align: left;
+        max-width: 200px; /* Para que rompa línea como "DESIGN & ILUSTRATION..." */
+    }
+
+    #Titulo .logo {
+        display: none; /* Ocultamos el logo pequeño decorativo */
+    }
+
+    /* --- 3. FECHA Y LIMPIEZA --- */
+    #subMenu {
+        /* Quitamos la posición absoluta */
+        position: relative;
+        bottom: auto; left: auto; right: auto;
+        
+        margin-top: 30px; /* Separación con el subtítulo */
+        padding: 0;
+        width: 100%;
+        display: block;
+    }
+
+    .hero-date {
+        /* Estilo de la fecha 2026 */
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        margin: 0;
+        display: block;
+        text-align: left; /* Alineado a la izquierda */
+        margin-left: 15px; /* Pequeño ajuste óptico para alinear con el texto de abajo */
+
+    }
+    
+    /* Ocultamos la lista de flechas (ABOUT ME, GALLERY...) en móvil */
+    .subMenuItems {
+        display: none; 
+    }
+    /* --- SKILLS --- */
+    .grid-2-col { grid-template-columns: 1fr; } /* Una columna */
+    .adobe-group, .skill-group:not(.adobe-group) { min-width: 100%; flex: 1 1 100%; }
+    
+    /* --- ABOUT --- */
+    .about-content { flex-direction: column; }
+    .about-header h3 { font-size: 1.27rem;}
+    .about-img-placeholder { height: 40vh; }
+    .about-text-grid { flex-direction: column; gap: 20px; }
+    .text-col { padding-left: 0; }
+    
+    /* --- GALLERY --- */
+    .split-screen { flex-direction: column; height: auto; }
+    .col { height: auto; min-height: 50vh; }
+    .img-container { height: 300px; } /* Altura fija controlada */
+    .screen-slide {
+        height: auto !important;      /* Deja que la altura se ajuste al contenido */
+        min-height: auto !important;  /* Evita alturas mínimas forzadas */
+        padding-bottom: 60px;         /* Un poco de aire al final de cada bloque */
+        gap: 15px;                    /* Reducimos el hueco entre imagen y texto */
+    }
+
+    /* 2. Arreglamos el bloque de texto para que no se estire */
+    .text-block {
+        flex-grow: 0;        /* IMPORTANTE: No crezcas para llenar huecos vacíos */
+        height: auto;        /* Mide solo lo que mida tu texto */
+        overflow: visible;   /* Quitamos el scroll interno, que haga scroll la página */
+    }
+
+    /* 3. Ajustamos la imagen para que no ocupe porcentajes raros */
+    .img-container {
+        height: 350px;       /* Altura fija razonable para móvil */
+        width: 100%;
+        flex-shrink: 0;
+    }
+    
+    /* Ajuste para las columnas en modo split */
+    .col {
+        height: auto !important;
+        margin-bottom: 40px; /* Separación entre el proyecto de arriba y el de abajo */
+    }
+    .text-block::-webkit-scrollbar{display: none;}
+    /* --- CONTACT --- */
+    #contact-section { padding: 60px 20px; }
+    .contact-methods { flex-direction: column; width: 100%; }
+    .method-card { max-width: 100%; }
+    .form-group { margin-bottom: 15px; }
+}
+
+/* =========================================
+   MÓVIL (480px)
+   ========================================= */
+@media (max-width: 480px) {
+    
+    /* --- HERO --- */
+    #subMenu { 
+        position: relative; 
+        bottom: 0; left: 0; right: 0; 
+        flex-direction: column-reverse; 
+        padding: 20px;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .hero-date { margin-right: 0; margin-bottom: 20px; }
+    .subMenuItems { display: none; } /* Ocultamos la lista inferior en móvil para limpiar */
+    
+    /* --- PROYECTOS --- */
+    #projects { padding: 40px 15px; }
+    #projects h2 { font-size: 2.5rem; }
+    
+    .lista_proyecto li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        border-bottom: 1px solid #ccc; /* Separador visual */
+        padding-bottom: 20px;
+    }
+    
+    .lista_proyecto h3 { font-size: 2rem; }
+    
+    /* --- GENERAL --- */
+    .about-header h2 { font-size: 3.5rem; }
+    .skills-header { flex-direction: column; gap: 10px; }
+    .skills-header h2 { font-size: 2rem; }
+    
+    /* Ajuste de márgenes globales */
+    #hero { padding: 10px; padding-top: 80px; }
+    section { padding: 40px 20px !important; }
+}
+
+/* =========================================
+   MÓVIL PEQUEÑO (320px)
+   ========================================= */
+@media (max-width: 360px) {
+    #Titulo h1 { font-size: 15vw; } /* Evita scroll horizontal */
+    .menu a { font-size: 1.2rem; }
+    .about-header h2 { font-size: 2.8rem; }
+}
+
+/* =========================================
+   PANTALLAS GRANDES (1920px+)
+   ========================================= */
+@media (min-width: 1921px) {
+    body {
+        /* Centramos el contenido para que no se estire infinitamente */
+        max-width: 1800px;
+        margin: 0 auto;
+        border-left: 1px solid #222;
+        border-right: 1px solid #222;
+    }
+    
+    #hero { height: 90vh; } /* Evita que el hero sea demasiado alto */
 }
