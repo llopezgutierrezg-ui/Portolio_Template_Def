@@ -6,6 +6,7 @@
   --color-text-muted: #a0a0a0; /* Subdued text for secondary content */
   --color-accent: #6366f1; /* Indigo — primary brand color */
   --color-accent-hover: #818cf8; /* Lighter indigo for hover states */
+  --color-rojo-base: #891721
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); /* 12px → 14px */
   --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem); /* 14px → 16px */
   --text-base: clamp(
@@ -40,6 +41,14 @@
 @font-face {
   font-family: "Helvetica Neue Perso Roman";
   src: url("../Font/helvetica-neue-5/HelveticaNeueRoman.otf") format("opentype");
+}
+@font-face {
+  font-family: "Lora";
+  src: url("../Font/Lora/static/Lora-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Lora italic";
+  src: url("../Font/Lora/static/Lora-Italic.ttf") format("truetype");
 }
 .base-margin-top {
   margin-top: 50px;
@@ -163,7 +172,6 @@ img {
   height: 40px; /* Ajusta según tu logo real */
   width: auto;
   padding-left: 40px;
-  filter: invert(1); /* Truco: si tu logo es negro, esto lo vuelve blanco */
 }
 
 .menu {
@@ -234,9 +242,20 @@ img {
   max-width: 100%;
   word-wrap: break-word;
 }
+/* Estilo para la imagen de las comillas dentro del H1 */
+.quote-icon {
+    display: inline-block; /* Se comporta como un bloque en línea (como una letra) */
+    
+    height: 0.30em; 
+    width: auto; /* Mantiene la proporción de la imagen */
+    
+    vertical-align: top; 
 
-/* Contenedor para el texto de la derecha (H3 + Logo pequeño) */
-/* Nota: En tu HTML el h3 y la img están sueltos, el CSS asume que están tras el H1 */
+    margin-left: 0.1em;  /* Separación de la Y */
+    margin-top: 0.02em;  /* Empujarlas un pelín abajo si quedan muy altas */
+    
+}
+
 #Titulo h3 {
   /* El Texto se va a la Columna 2, Fila 1 (Arriba) */
   grid-column: 2;
@@ -268,17 +287,34 @@ img {
 
   display: block;
   margin-top: 20px;
-  margin-right: 300px;
+  margin-right: 285px;
   height: 50px;
   padding-left: 0; /* Quitamos el padding-left que tenías antes, ya no hace falta */
-  filter: invert(1);
 }
 
 /* --- 4. Submenú Inferior Izquierda (Flechas) --- */
+/* --- MODIFICAR ESTO --- */
 #subMenu {
-  position: absolute; /* Lo fijamos abajo a la izquierda */
-  bottom: 40px;
-  left: 40px;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    
+    /* AÑADIR ESTO PARA QUE OCUPE EL ANCHO Y ALINEE: */
+    right: 40px; /* Se estira hasta la derecha */
+    display: flex;
+    justify-content: space-between; /* Empuja la lista a la izq y la fecha a la der */
+    align-items: flex-start; /* IMPORTANTE: Alinea ambos elementos ARRIBA (altura de About Me) */
+    pointer-events: none; /* Para que la caja invisible no tape clicks en el centro */
+}
+
+.hero-date {
+    font-family: "Helvetica Neue Perso Roman", sans-serif;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-right: 300px;
+    margin-top: 10px; /* Ajusta este número si es necesario para clavar la línea visual */
 }
 
 .subMenuItems {
@@ -306,7 +342,6 @@ img {
 .icono_flecha {
   width: 100px; /* Flechas largas */
   height: auto;
-  filter: invert(1); /* Vuelve blancas las flechas si son imágenes negras */
 }
 /*
 
@@ -368,6 +403,12 @@ about me
   height: 60vh;
   width: 100%;
 }
+.about-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .about-text-grid {
   flex: 1;
@@ -381,7 +422,7 @@ about me
 }
 
 .text-col p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.4;
   font-weight: 600;
   color: #111;
@@ -414,7 +455,7 @@ skills
 }
 
 .skills-header h2 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   line-height: 1;
   margin: 0;
   text-transform: uppercase;
@@ -437,20 +478,43 @@ skills
   margin-bottom: 20px;
   font-weight: 400;
 }
-
+.skill-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    
+    /* --- CAMBIO CLAVE 1: Permitir que los elementos bajen de línea --- */
+    flex-wrap: wrap; 
+}
 .skill-bar {
-  height: 6px;
-  background: var(--color-bg-alt);
-  border-radius: 3px;
-  overflow: hidden;
+    /* --- CAMBIO CLAVE 2: Forzar a que ocupe todo el ancho en una nueva línea --- */
+    flex-basis: 100%; 
+    width: 100%;
+    margin-top: 15px; /* Espacio para separarlo del texto */
+    
+    height: 6px;
+    background-color: #333; /* Gris oscuro para el fondo */
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .skill-fill {
-  height: 100%;
-  width: 0;
-  background: var(--accent);
-  border-radius: 3px;
-  transition: width 1s var(--ease-out) 0.3s;
+    height: 100%;
+    width: 0; /* IMPORTANTE: Empieza en 0 */
+    background-color: #7a00dd; /* Tu color accent */
+    border-radius: 3px;
+    
+    /* Animación suave */
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* CLASE DETONADORA (Esta hace la magia) */
+/* Cuando la sección tiene la clase 'skills-visible', las barras crecen */
+.skills-visible .skill-fill {
+    width: var(--fill);
 }
 
 /* Animate skill bars when revealed */
@@ -547,15 +611,47 @@ projects
   /* Si tu web es oscura, quizás quieras un fondo gris oscuro aquí, 
        pero basándome en la imagen roja: */
   background-color: #dbd5d5;
+
+}
+.marquee-container {
+    width: 100%;
+    white-space: nowrap; /* Obliga al texto a estar en una sola línea */
 }
 
+.marquee-track {
+    display: flex; /* Pone los dos h2 uno al lado del otro */
+    width: fit-content;
+    /* La animación: nombre, duración, curva de velocidad, repetición */
+    animation: scrollText 20s linear infinite; 
+}
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Movemos el track un 50% a la izquierda. 
+           Como tenemos 2 copias idénticas, al llegar al 50% 
+           la segunda copia está exactamente donde empezó la primera,
+           creando la ilusión de infinito. */
+        transform: translateX(-50%);
+    }
+}
 #projects h2 {
-  color: #7e0000; /* Título en blanco para contrastar con el fondo */
-  font-size: 4.5rem; /* Tamaño grande */
-  margin-bottom: 3rem; /* Separación con las tarjetas */
-  text-transform: uppercase;
-  justify-content: center;
-  letter-spacing: 2px;
+    color: #7e0000; /* Título en blanco para contrastar con el fondo */
+    font-size: 4.5rem; /* Tamaño grande */
+    margin-bottom: 1rem; /* Separación con las tarjetas */
+    text-transform: uppercase;
+    justify-content: center;
+    letter-spacing: 2px;
+  
+    flex-shrink: 0; /* Evita que el texto se aplaste */
+    padding-right: 0.5rem; /* Un pequeño espacio al final para conectar con el siguiente */
+    white-space: nowrap;
+}
+@media (max-width: 768px) {
+    #projects h2 {
+        font-size: 3rem;
+    }
 }
 /* --- Configuración General del Bloque --- */
 #projects {
@@ -612,13 +708,17 @@ projects
 
 /* 4. Texto Grande (H3) - Serif */
 .lista_proyecto h3 {
-  font-family: "Times New Roman", Times, serif; /* Fuente con remates (Serif) */
+  font-family: "Lora";
   font-size: 3rem; /* Tamaño muy grande */
   font-weight: 400; /* Normal, no negrita (las serif grandes se ven mejor así) */
   color: #1a1a1a; /* Negro suave */
   margin: 0;
   line-height: 1; /* Altura de línea compacta */
   text-transform: uppercase;
+}
+.lista_proyecto h3:hover {
+  text-transform: lowercase;
+  font-family: "Lora"
 }
 
 /* 5. Texto Pequeño (P) - Descripción */
@@ -788,8 +888,6 @@ footer
   height: 100vh; /* Ocupa toda la pantalla */
   overflow: hidden; /* Corta lo que sobre de la imagen */
 
-  /* Sombra opcional para distinguir las capas al subir */
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* --- ESTILO DE LA IMAGEN HTML --- */
