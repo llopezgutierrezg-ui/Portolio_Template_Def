@@ -17,8 +17,9 @@
         <!-- Idioma -->
         <meta http-equiv="Content-Language" content="English">
 
-        <link rel="stylesheet" href="assets/CSS/pruebas.css">
         <link rel="stylesheet" href="assets/CSS/Pop-ups.css">
+        <link rel="stylesheet" href="assets/CSS/pruebas.css">
+        
         <script src="assets/JS/index.js"></script>
         <script src="assets/JS/Pop-ups.js" defer></script>
         <link rel="apple-touch-icon" sizes="180x180" href="./assets/Img/apple-touch-icon.png">
@@ -565,22 +566,26 @@
         </div>
         </footer>
 
-        <!-- Modal for project details -->
-         <div id="modalOverlay" class="modal-overlay">
+        <div id="modalOverlay" class="modal-overlay">
             <div class="card">
                 <span class="close-modal">&times;</span>
 
                 <div class="card-header">
-                    <img src="" alt="Project Image">
+                    <button class="nav-btn prev-btn" id="prevSlide">&#10094;</button>
+                    
+                    <div class="media-content"></div>
+                    
+                    <button class="nav-btn next-btn" id="nextSlide">&#10095;</button>
                 </div>
 
                 <div class="card-body">
                     <div class="tags-container"></div>
                     
-                    <small class="card-meta">New Update</small>
+                    <small class="card-meta">Category</small>
 
                     <h2>TITULO DEL PROYECTO</h2>
-                    <p>Descripción del proyecto...</p>
+                    
+                    <div class="project-description"></div>
                 </div>
 
                 <div class="card-footer">
