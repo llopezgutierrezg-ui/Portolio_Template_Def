@@ -104,37 +104,31 @@ img {
   display: block;
 }
 
-/* El contenedor principal */
+/* =========================================
+   1. HERO SECTION (CORREGIDO)
+   ========================================= */
 #hero {
   height: 100vh;
+  min-height: 600px;
   width: 100%;
-  padding-left: 20px;
-  padding-bottom: 40px;
-  padding-right: 40px;
-  /* Margen alrededor de toda la pantalla */
-  position: relative; /* Necesario para posicionar elementos absolutos dentro */
+  padding: 80px 40px 40px 40px; 
+  
+  /* Parallax Sticky */
+  position: sticky;
+  top: 0;
+  z-index: 0; /* Se queda al fondo */
+  
   background-image: url(../Img/Frame_1.jpg);
-  background-size: cover; /* Cubre toda la ventana, escalando si es necesario */
-  background-position: center; /* Centra la imagen */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 
-  /* --- CAMBIOS PARALLAX --- */
-  position: sticky; /* Se pega al techo */
-  top: 0; /* Justo en el borde superior */
-  z-index: 0; /* Se queda al fondo */
-
-  /* --- AQUÍ ESTÁ EL ARREGLO DEL LAYOUT --- */
-
-  /* 1. Compensamos que el menú ahora flota (fixed) */
-
-  /* 2. Activamos Flexbox para controlar la posición */
+  /* Distribución vertical */
   display: flex;
-  flex-direction: column; /* Elementos uno debajo de otro */
-
-  /* 3. Centramos el título verticalmente en el espacio disponible */
-  justify-content: center;
-
-  box-sizing: border-box; /* Vital para que el padding no rompa el ancho */
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical */
+  align-items: center;
+  gap: 20px; /* Espacio entre el Titulo grande y el submenú */
 }
 
 /* --- 2. Barra de Navegación (Navbar) --- */
@@ -176,14 +170,14 @@ img {
 
 .menu {
   display: flex;
-  gap: 4rem; /* Espacio amplio entre enlaces como en el diseño */
+  gap: 2rem; /* Espacio amplio entre enlaces como en el diseño */
   list-style: none;
 }
 
 .menu a {
   text-decoration: none;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: clamp(0.5rem, 0.3rem + 0.5vw, 0.75rem);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -422,7 +416,7 @@ about me
 }
 
 .text-col p {
-  font-size: 1rem;
+  font-size: var(--space-sm);
   line-height: 1.4;
   font-weight: 600;
   color: #111;
@@ -1384,4 +1378,296 @@ footer
     }
     
     #hero { height: 90vh; } /* Evita que el hero sea demasiado alto */
+}
+
+/* =========================================
+   7. MEDIA QUERIES (RESPONSIVE FIXES)
+   ========================================= */
+
+/* --- BOTÓN HAMBURGUESA --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 2000;
+}
+.hamburger span {
+    display: block; position: absolute; height: 2px; width: 100%;
+    background: #fff; transition: .25s ease-in-out;
+}
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+.hamburger.active span:nth-child(1) { top: 9px; transform: rotate(135deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
+.hamburger.active span:nth-child(3) { top: 9px; transform: rotate(-135deg); }
+
+
+/* --- TABLET Y MENOR (1024px) --- */
+@media (max-width: 1024px) {
+    #hero { padding: 80px 20px; }
+    
+    #Titulo { 
+        margin-top: 20vh;
+        grid-template-columns: 1fr; /* Una columna */
+        grid-template-rows: auto auto auto;
+        text-align: center; 
+        justify-items: center;
+    }
+    
+    #Titulo h1 { 
+        grid-column: 1; grid-row: 1; 
+        text-align: center; 
+        font-size: 18vw; /* Ajuste para evitar overflow */
+    }
+    
+    #Titulo h3 { 
+        grid-column: 1; grid-row: 2; 
+        justify-self: center; align-self: center;
+        margin: 20px 0; 
+        text-align: center; 
+        font-size: 1rem;
+        margin-right: 0;
+    }
+    
+    #Titulo .logo { display: none; } 
+  }
+  /* --- MÓVIL (900px) --- */
+@media (max-width: 900px) {
+    .hamburger { display: block; }
+    .menu {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background-color: rgba(13, 13, 13, 0.98);
+        flex-direction: column; justify-content: center;
+        transition: 0.4s ease; padding: 0; margin: 0; z-index: 1500;
+    }
+    .menu.active { right: 0; }
+    .menu a { font-size: 1.5rem; }
+
+    /* Hero en Móvil */
+    #hero {
+        align-items: flex-start;
+        text-align: left;
+        justify-content: center;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    #Titulo { 
+        display: flex; flex-direction: column; align-items: flex-start;
+        text-align: left;
+    }
+    
+    #Titulo h1 {
+        font-size: 25vw;
+        line-height: 0.8;
+        text-align: left;
+        margin-left: -5px;
+    }
+    
+    #Titulo h3 {
+        margin: 20px 0 0 0;
+        text-align: left;
+        max-width: 200px;
+        align-self: flex-start;
+    }
+
+    /* Submenú Móvil */
+    #subMenu {
+        display: none;
+    }
+    .subMenuItems { display: none; } 
+    .hero-date { margin: 0; text-align: left; font-size: 1.2rem; }
+  }
+  @media (max-width: 1025px) {
+    #subMenu{
+      display: none;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    
+    /* 1. CONTENEDOR MAESTRO: Centra el contenido en pantallas anchas */
+    /* Esto evita que el texto se vaya a los extremos en monitores grandes */
+    #about-section, 
+    #skills-section, 
+    #projects, 
+    #contact-section,
+    .parallax-stack {
+        max-width: 1600px; /* Ancho máximo de seguridad */
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    /* 2. HERO: Ajuste fino para que el título no toque los bordes en 1366px */
+  #Titulo {
+    max-width: 1400px;
+    margin: 30 auto; /* Centrado perfecto */
+  }
+  #Titulo h1 {
+    font-size: 15rem;
+  }
+  #subMenu {
+    display: none;
+  }
+
+  }
+  @media (min-width: 1500px) {
+    
+    /* 1. CONTENEDOR MAESTRO: Centra el contenido en pantallas anchas */
+    /* Esto evita que el texto se vaya a los extremos en monitores grandes */
+    #about-section, 
+    #skills-section, 
+    #projects, 
+    #contact-section,
+    .parallax-stack {
+        max-width: 1600px; /* Ancho máximo de seguridad */
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    /* 2. HERO: Ajuste fino para que el título no toque los bordes en 1366px */
+  #Titulo {
+    max-width: 1400px;
+    margin: 30 auto; /* Centrado perfecto */
+  }
+  #Titulo h1 {
+    font-size: 15rem;
+  }
+
+  }
+  /* =========================================
+   NUEVO BOTÓN SCROLL DOWN (PILL)
+   ========================================= */
+
+/* El contenedor que posiciona el botón */
+.scroll-pill-wrapper {
+    text-decoration: none;
+    z-index: 20;
+    display: block;
+
+    /* --- NUEVO CÓDIGO PARA POSICIONAR --- */
+    position: absolute; /* Lo saca del flujo normal para moverlo libremente */
+    bottom: 40px;       /* Distancia desde abajo */
+    right: 100%;         /* Distancia desde la DERECHA (aquí lo mueves) */
+}
+
+/* --- Estilos visuales de la Píldora --- */
+.scroll-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 180px;
+    /* Degradado suave similar a la imagen */
+    background: linear-gradient(to bottom, #e8e8e8, #f4f4f4);
+    border-radius: 50px;
+    /* Sombras para efecto 3D suave (Neumorfismo) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+/* --- RESPONSIVE: CENTRAR EN MÓVIL --- */
+@media (max-width: 768px) {
+    .scroll-pill-wrapper {
+        right: auto;      /* Desactivamos la alineación a la derecha */
+        left: 50%;        /* Lo empujamos a la mitad de la pantalla */
+        transform: translateX(-50%); /* Corregimos para que quede perfectamente centrado */
+        bottom: 20px;     /* Quizás un poco más pegado al borde en móvil */
+    }
+}
+.scroll-pill:hover {
+    transform: translateY(3px);
+    box-shadow:
+      3px 3px 6px rgba(0, 0, 0, 0.15),
+      -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Texto "scroll down" */
+.scroll-text {
+    font-family: "Helvetica Neue Perso Roman", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    text-transform: lowercase;
+}
+
+/* Contenedor de flechas SVG */
+.arrow-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -5px;
+}
+
+/* Estilo base de las flechas SVG */
+.chevron {
+    width: 36px;
+    height: 36px;
+    fill: none;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.2; /* Empiezan apagadas */
+    animation: trafficSignal 1.8s infinite ease-in-out;
+}
+
+/* Colores específicos y retardo de animación */
+/* 1. Rosa claro */
+.chevron:nth-child(1) { stroke: #d4a5a5; animation-delay: 0s; }
+/* 2. Rojo medio (superpuesto ligeramente) */
+.chevron:nth-child(2) { stroke: #b85e5e; animation-delay: 0.25s; margin-top: -18px; }
+/* 3. Rojo oscuro corporativo */
+.chevron:nth-child(3) { stroke: #891721; animation-delay: 0.5s; margin-top: -18px; }
+
+/* Animación de señal de tráfico */
+@keyframes trafficSignal {
+    0%, 100% { opacity: 0.2; }
+    25% { opacity: 1; transform: scale(1.05); }
+    50% { opacity: 0.2; }
+}
+
+
+/* --- COMPORTAMIENTO RESPONSIVE DEL BOTÓN --- */
+
+/* DESKTOP (Mayor a 900px) */
+@media screen and (min-width: 901px) {
+    #about-section {
+        /* Necesario para que el botón absoluto se posicione respecto a esta sección */
+        position: relative;
+    }
+
+    .scroll-pill-wrapper {
+        position: absolute;
+        /* Lo situamos inicialmente arriba, justo en el límite entre Hero y About */
+        top: -90px; /* Mitad de la altura del botón (180/2) hacia arriba */
+        left: 90%;
+        /* Centrado horizontalmente */
+        transform: translateX(-50%);
+        /* Transición suave para el movimiento JS */
+        transition: transform 0.1s ease-out;
+        will-change: transform;
+    }
+}
+
+/* MÓVIL (900px o menos) */
+@media screen and (max-width: 900px) {
+    .scroll-pill-wrapper {
+        position: relative;
+        /* En móvil, lo colocamos con margen negativo para subirlo entre las secciones */
+        margin-top: -120px;
+        margin-bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* Aseguramos que el JS no interfiera en móvil */
+        transform: translateX(-50%) !important;
+    }
 }

@@ -1,268 +1,299 @@
-:root{
-    --popup-bg: #FFFFFF; /* Fondo blanco */
-    --text-main: #000000;
-    --text-secondary: #555555;
-    --border-color: #E0E0E0;
+:root {
+  --popup-bg: #ffffff; /* Fondo blanco */
+  --text-main: #000000;
+  --text-secondary: #555555;
+  --border-color: #e0e0e0;
 }
 @font-face {
-    font-family: 'frenesi';
-    src: url(../Font/Frenesí-Regular.ttf) format(truetype);
+  font-family: "frenesi";
+  src: url(../Font/Frenesí-Regular.ttf) format(truetype);
 }
 
 /* --- FONDO OSCURO (EL CONTENEDOR FLOTANTE) --- */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Un poco más claro para destacar la tarjeta blanca */
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Un poco más claro para destacar la tarjeta blanca */
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
 .modal-overlay.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* --- TARJETA PRINCIPAL (ESTILO POLAROID MODERNO) --- */
+/* --- TARJETA PRINCIPAL --- */
 .card {
-    position: relative;
-    background-color: var(--popup-bg);
-    width: 700px; /* Ancho fijo para parecerse al diseño */
-    height: 80vh;
-    max-width: 90vw;
-    max-height: 90vh;
-    padding: 15px; /* Marco blanco alrededor de la imagen */
-    border-radius: 4px; /* Bordes sutiles, no muy redondos */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
+  position: relative;
+  background-color: var(--popup-bg);
+
+  /* --- CAMBIOS DE TAMAÑO --- */
+  width: 400px; /* Mucho más estrecho (antes 700px) */
+  height: auto; /* Altura automática según contenido */
+  max-height: 85vh; /* Tope para que no se salga en pantallas bajitas */
+
+  /* Mantenemos padding pequeño como en tu foto */
+  padding: 15px;
+  border-radius: 8px; /* Un poco más de borde redondeado queda mejor en tarjeta pequeña */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  /* FLEX para estructura vertical */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
 }
 
 .modal-overlay.show .card {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* Botón cerrar */
 .close-modal {
-    position: absolute;
-    top: -40px; /* Lo sacamos fuera de la tarjeta arriba a la derecha */
-    right: 0;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    transition: color 0.3s;
+  position: absolute;
+  top: -40px; /* Lo sacamos fuera de la tarjeta arriba a la derecha */
+  right: 0;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
 }
-.close-modal:hover { color: #ccc; }
+.close-modal:hover {
+  color: #ccc;
+}
 
-/* --- HEADER / IMAGEN --- */
 .card-header {
-    position: relative; /* Clave para posicionar las flechas */
-    width: 100%;
-    height: 400px;
-    background-color: #f7f7f7; /* Fondo negro por si el vídeo tarda en cargar */
-    overflow: hidden;
-    margin-bottom: 20px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  width: 100%;
+
+  /* --- CAMBIOS DE ALTURA IMAGEN --- */
+  height: 90vh; /* Altura fija para mantener proporción visual agradable */
+  min-height: auto; /* Quitamos el min-height anterior */
+
+  background-color: #f7f7f7;
+  overflow: hidden;
+  margin-bottom: 15px; /* Reducimos margen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px; /* Opcional: suavizar esquinas de la imagen */
 }
 
 .card-header img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* --- CUERPO --- */
 .card-body {
-    padding: 0 10px; /* Un poco de aire lateral */
-    margin-bottom: 20px;
+  /* CAMBIO CLAVE: Ocupa todo el espacio sobrante */
+  flex: 1;
+
+  /* Scroll interno solo para el texto */
+  overflow-y: auto;
+
+  padding: 20px 25px; /* Añadimos el padding aquí que quitamos de .card */
+  margin-bottom: 10px;
 }
 
 /* ETIQUETAS (Píldoras) */
 .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
 }
-
+.card h2 {
+  font-size: 1.4rem; /* Antes 1.8rem, ahora un poco más pequeño */
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
 .tag {
-    padding: 6px 16px;
-    border-radius: 50px; /* Píldora completa */
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: 1px solid #000; /* Borde negro por defecto */
-    background-color: transparent;
-    color: #000;
+  padding: 4px 12px;
+  border-radius: 50px; /* Píldora completa */
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid #000; /* Borde negro por defecto */
+  background-color: transparent;
+  color: #000;
 }
 
 /* La primera etiqueta (o una clase específica) será negra rellena */
 .tag:first-child {
-    background-color: #000000;
-    color: #fff;
+  background-color: #000000;
+  color: #fff;
 }
 
 /* Categoría pequeña (New Update) */
 .card-meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-    display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  display: block;
 }
 
 /* Título */
 .card h2 {
-    font-size: 1.8rem;
-    line-height: 1.1;
-    text-transform: uppercase;
-    color: var(--text-main);
-    margin-bottom: 15px;
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Asegurar fuente limpia */
-    border-top: 1px solid #ddd; /* Línea fina encima del título */
-    padding-top: 15px;
+  font-size: 1.8rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin-bottom: 15px;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Asegurar fuente limpia */
+  border-top: 1px solid #ddd; /* Línea fina encima del título */
+  padding-top: 15px;
 }
 
 /* Descripción */
 .card p {
-    font-size: 0.9rem;
-    color: #333;
-    line-height: 1.5;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
 }
 
 /* --- FOOTER / ICONOS --- */
 .card-footer {
-    padding: 0 10px;
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
+  padding: 0 10px;
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
 }
 
 /* Estilo del contenedor cuadrado negro */
 .tech-icon {
-    width: 35px;
-    height: 35px;
-    background-color: #111;
-    border-radius: 6px;
-    
-    /* Centramos la imagen perfectamente */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: #111;
+  border-radius: 6px;
+
+  /* Centramos la imagen perfectamente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo de TU imagen dentro del icono */
 .tech-icon img {
-    width: 60%;  /* La imagen ocupará el 60% del cuadrado */
-    height: 60%;
-    object-fit: contain; /* Asegura que se vea entera sin recortarse */
-    
-    /* TRUCO PRO: */
-    /* Si tus iconos son NEGROS (PNGs normales) y el fondo es negro, no se verán.
+  width: 60%; /* La imagen ocupará el 60% del cuadrado */
+  height: 60%;
+  object-fit: contain; /* Asegura que se vea entera sin recortarse */
+
+  /* TRUCO PRO: */
+  /* Si tus iconos son NEGROS (PNGs normales) y el fondo es negro, no se verán.
        Esta línea los invierte y los vuelve BLANCOS automáticamente. 
        Si tus iconos ya son blancos o de colores, borra esta línea. */
-    filter: invert(1); 
+  filter: invert(1);
 }
 .media-content {
-    width: 100%;
-    height: 100%;
-    display: flex; /* Para centrar contenido si fuera necesario */
+  width: 100%;
+  height: 100%;
+  display: flex; /* Para centrar contenido si fuera necesario */
 }
-.media-content img, 
+.media-content img,
 .media-content video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Llenar sin deformar */
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Llenar sin deformar */
+  display: block;
 }
 /* --- FLECHAS DE NAVEGACIÓN --- */
 .nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 10;
-    user-select: none; /* Evita que se seleccione el texto al hacer click rápido */
-    border-radius: 50%; /* Botón redondo si quieres, o quítalo para cuadrado */
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none; /* Evita que se seleccione el texto al hacer click rápido */
+  border-radius: 50%; /* Botón redondo si quieres, o quítalo para cuadrado */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-.prev-btn { left: 10px; }
-.next-btn { right: 10px; }
+.prev-btn {
+  left: 10px;
+}
+.next-btn {
+  right: 10px;
+}
 
 /* Texto (descripción) */
 .project-description {
-    white-space: pre-line;
-    line-height: 1.6;
-    color: #333;
+  white-space: pre-line;
+  line-height: 1.6;
+  color: #333;
 }
 /* --- ESTILO ÚNICO PARA EL PROBADOR DE FUENTE --- */
 .type-tester-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff; /* O el color de fondo que prefieras */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* O el color de fondo que prefieras */
 }
 
 .type-tester-input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    padding: 40px;
-    resize: none; /* Bloquea el redimensionado manual */
-    outline: none; /* Quita el borde azul al seleccionar */
-    text-align: center;
-    
-    /* IMPORTANTE: Aquí debes poner el nombre real de tu fuente cargada */
-    font-family: 'Frenesi', sans-serif; 
-    font-size: 3.5rem;
-    color: #000;
-    
-    /* Centrado vertical del texto */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 40px;
+  resize: none; /* Bloquea el redimensionado manual */
+  outline: none; /* Quita el borde azul al seleccionar */
+  text-align: center;
+
+  /* IMPORTANTE: Aquí debes poner el nombre real de tu fuente cargada */
+  font-family: "Frenesi", sans-serif;
+  font-size: 3.5rem;
+  color: #000;
+
+  /* Centrado vertical del texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Placeholder para que se entienda qué hacer */
 .type-tester-input::placeholder {
-    color: #ccc;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-size: 1.2rem;
-    font-style: italic;
+  color: #ccc;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
 }
 
-.type-tester-input textarea{
-    font-family: "frenesi";
+.type-tester-input textarea {
+  font-family: "frenesi";
 }

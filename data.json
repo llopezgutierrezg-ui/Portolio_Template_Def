@@ -5,7 +5,7 @@
     "categoria": "Complete Visual Identity",
     "descripcion": "This project develops the visual identity of AUREA, a design university conceived as a space where creativity, critical thinking, and structure coexist in balance. It is a group project in which I was responsible for the visual design, look & feel, brand guidelines, UX/UI design of the web app, the promotional video, printed applications, three of the six promotional posters, iconography, illustrations, part of the corporate stationery, part of the mockups, and part of the spatial design.",
     "imagen": [
-      "https://ik.imagekit.io/1kpiksaft/New%20Folder/AUREA/Aurea%20Presentaci%C3%B3n.mp4?updatedAt=1767812573267",
+      "https://ik.imagekit.io/1kpiksaft/New%20Folder/AUREA/Aurea%20Presentaci%C3%B3n.mp4",
       "https://ik.imagekit.io/1kpiksaft/New%20Folder/AUREA/Captura%20de%20pantalla%202026-01-04%20230724.png?updatedAt=1767795168505",
       "https://ik.imagekit.io/1kpiksaft/New%20Folder/AUREA/Captura%20de%20pantalla%202026-01-04%20230629.png?updatedAt=1767795168527",
       "https://ik.imagekit.io/1kpiksaft/New%20Folder/AUREA/Captura%20de%20pantalla%202026-01-04%20230724.png?updatedAt=1767795168505",
@@ -61,7 +61,7 @@
     "nombre": "COFFEE ADVERTISING",
     "categoria": "Motion Graphics & Design",
     "descripcion": "This project consists on the creation of a motion graphics advertisement for a coffee brand. The ad aims to highlight the unique qualities and flavors of the coffee through dynamic visuals and engaging animations. The project uses Jack Stauber's song 'Coffee'",
-    "imagen": "ruta/a/tu/imagen_proyecto.jpg",
+    "imagen": "https://ik.imagekit.io/1kpiksaft/New%20Folder/COFFEE%20ADVERTISING/L%C3%B3pez_Guti%C3%A9rrez_Luc%C3%ADa_Anuncio%20caf%C3%A9.mp4.mp4",
     "etiquetas": ["Solo", "Animation", "Design", "Illustration"],
     "iconos": ["assets/Img/Icons/Id.png", "assets/Img/Icons/Ai.png"]
   },
@@ -71,7 +71,7 @@
     "nombre": "PERSONAL ANIMATION TRAILER",
     "categoria": "Character Illustration & Animation",
     "descripcion": "This is a personal animation trailer for a series of illustrations, maybe even future graphic novels, of my own world building.",
-    "imagen": "ruta/a/tu/imagen_proyecto.jpg",
+    "imagen": "https://ik.imagekit.io/rovpwm7f5/cafe%20video/L%C3%B3pez_Guti%C3%A9rrez_Luc%C3%ADa_ENTREGA.FINAL..mp4",
     "etiquetas": ["Solo", "Animation", "Illustration"],
     "iconos": ["assets/Img/Icons/Id.png", "assets/Img/Icons/Ai.png"]
   },
