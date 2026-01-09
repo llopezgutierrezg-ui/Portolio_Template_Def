@@ -1,6 +1,8 @@
 # Portolio_Template_Def
 
- ✦Sy''rah — Digital Portfolio
+**WEB ACESS**:https://llopezgutierrezg-ui.github.io/Portolio_Template_Def/
+
+✦Sy''rah — Digital Portfolio
 This web portfolio is a curated digital space where visual storytelling, interaction, and identity converge.
 Created under the artistic name Sy''rah, the site is conceived as an experience rather than a simple showcase.
 
@@ -70,93 +72,94 @@ For collaborations, conversations, or further exploration, the Contact section o
 Thank you for entering this space.
 Sy''rah
 
----------------------------------------------------------------------------------------------------------------
- ✦ Sy''rah — Portfolio Digital
+---
 
-Este portfolio web es un espacio digital curado donde convergen la *narrativa visual*, la interacción y la identidad.
-Creado bajo el nombre artístico *Sy''rah*, el sitio está concebido como una experiencia, no solo como una muestra de trabajos.
+✦ Sy''rah — Portfolio Digital
 
-El diseño apuesta por la contención: el movimiento existe, pero solo cuando tiene sentido. El foco permanece claro e intencional — *los proyectos son el núcleo*, todo lo demás está al servicio de ellos.
+Este portfolio web es un espacio digital curado donde convergen la _narrativa visual_, la interacción y la identidad.
+Creado bajo el nombre artístico _Sy''rah_, el sitio está concebido como una experiencia, no solo como una muestra de trabajos.
+
+El diseño apuesta por la contención: el movimiento existe, pero solo cuando tiene sentido. El foco permanece claro e intencional — _los proyectos son el núcleo_, todo lo demás está al servicio de ellos.
 
 ---
 
- ✧ Concepto e Intención
+✧ Concepto e Intención
 
-El portfolio explora el equilibrio entre *interacción y quietud*.
-En lugar de apoyarse en animaciones constantes, la web utiliza *efectos parallax* y *movimientos sutiles* para generar profundidad sin ruido, permitiendo una conexión directa con el trabajo.
+El portfolio explora el equilibrio entre _interacción y quietud_.
+En lugar de apoyarse en animaciones constantes, la web utiliza _efectos parallax_ y _movimientos sutiles_ para generar profundidad sin ruido, permitiendo una conexión directa con el trabajo.
 
-Cada decisión visual está guiada por una idea clara: *el impacto debe ser inmediato*, sin distracciones.
+Cada decisión visual está guiada por una idea clara: _el impacto debe ser inmediato_, sin distracciones.
 La interfaz se retira para que los proyectos puedan ocupar el primer plano.
 
 ---
 
- ✧ Estructura Espacial
+✧ Estructura Espacial
 
 La web se despliega como una secuencia de espacios:
 
- *Hero*
-  Una declaración visual inicial — una invitación a entrar en el universo de Sy''rah.
+_Hero_
+Una declaración visual inicial — una invitación a entrar en el universo de Sy''rah.
 
- *About Me*
-  Un breve retrato personal acompañado de una sección compacta de *skills*, integrada como parte del relato y no como una lista técnica.
+_About Me_
+Un breve retrato personal acompañado de una sección compacta de _skills_, integrada como parte del relato y no como una lista técnica.
 
- *Índice de Proyectos*
-  Los proyectos se revelan mediante *pop-ups*, generando pequeños momentos de descubrimiento sin romper el flujo de la experiencia.
+_Índice de Proyectos_
+Los proyectos se revelan mediante _pop-ups_, generando pequeños momentos de descubrimiento sin romper el flujo de la experiencia.
 
- *Galería Visual*
-  Un espacio más contemplativo, centrado en la imagen y la atmósfera, que ofrece otra forma de recorrer los mismos proyectos.
+_Galería Visual_
+Un espacio más contemplativo, centrado en la imagen y la atmósfera, que ofrece otra forma de recorrer los mismos proyectos.
 
- *Contacto*
-  Un punto de cierre — abierto, sencillo y humano.
+_Contacto_
+Un punto de cierre — abierto, sencillo y humano.
 
- *Página de Carga*
-  Un momento de transición, diseñado como parte de la experiencia y no como una pausa.
+_Página de Carga_
+Un momento de transición, diseñado como parte de la experiencia y no como una pausa.
 
- *Página 404*
-  Incluso en el error, el lenguaje visual se mantiene intacto — nada es accidental.
+_Página 404_
+Incluso en el error, el lenguaje visual se mantiene intacto — nada es accidental.
 
 ---
 
- ✧ Filosofía de Interacción
+✧ Filosofía de Interacción
 
 El movimiento se utiliza con intención.
-Las animaciones son mínimas, deliberadas y nunca protagonistas. Su función es *acompañar*, no competir.
+Las animaciones son mínimas, deliberadas y nunca protagonistas. Su función es _acompañar_, no competir.
 
 El parallax aporta profundidad, los pop-ups fomentan el foco y la ausencia de exceso permite que exista claridad.
 
 ---
 
- ✧ Proceso y Herramientas
+✧ Proceso y Herramientas
 
-El proceso de desarrollo combina decisiones creativas manuales con el apoyo de *herramientas de IA*, utilizadas para:
+El proceso de desarrollo combina decisiones creativas manuales con el apoyo de _herramientas de IA_, utilizadas para:
 
-* Limpieza y optimización de código
-* Sugerencias estructurales
-* Mejora del flujo de trabajo
+- Limpieza y optimización de código
+- Sugerencias estructurales
+- Mejora del flujo de trabajo
 
 La IA se entiende como una asistente, no como un sustituto, ayudando a mantener coherencia y claridad sin perder el control creativo.
 
 ---
 
- ✧ Tecnologías
+✧ Tecnologías
 
-* HTML5
-* CSS3
-* JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ---
 
- ✧ Estado del Proyecto
+✧ Estado del Proyecto
 
 El portfolio está finalizado, pero permanece abierto a evolución — como todo espacio creativo.
 
 ---
 
- ✧ Contacto
+✧ Contacto
 
-Para colaboraciones, conversaciones o futuras exploraciones, la sección *Contacto* de la web está siempre abierta.
+Para colaboraciones, conversaciones o futuras exploraciones, la sección _Contacto_ de la web está siempre abierta.
 
 ---
 
 Gracias por entrar en este espacio.
-*Sy"rah*
+_Sy"rah_
