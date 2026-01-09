@@ -819,7 +819,6 @@ video::--webkit-media-controls {
 .text-block {
   color: #111;
   flex-grow: 1;
-  overflow-y: auto; /* Si el texto es muy largo, hace scroll dentro de su hueco */
 }
 .text-block h2 {
   font-size: 1.5rem;
