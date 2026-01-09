@@ -29,7 +29,7 @@
     <body>
         <div id = "inicio"></div>
         <nav id="navbar">
-            <img src="Capa_2.svg" alt="" class ="logo">
+            <img src="./assets/Img/logo.png" alt="" class ="logo">
             <ul class="menu">
                 <li><a href="#">ABOUT ME</a></li>
                 <li><a href="#">GALLERY</a></li>
@@ -40,9 +40,9 @@
         </nav>
         <div id = "hero">
             <div id = "Titulo">
-                <h1>SY ”</br>RAH</h1>
+                <h1>SY<img src="./assets/Img/comillas.png" alt="" class="quote-icon"></br>RAH</h1>
                 <h3>DESIGN &<br> ILLUSTRATION <br> PORTFOLIO</h3>
-                <img src="descarga.png" alt="" class="logo">
+                <img src="./assets/Img/logo.png" alt="" class="logo">
             </div>
             <div id = "subMenu">
                 <ul class="subMenuItems">
@@ -51,6 +51,7 @@
                     <li><img src="Flecha_Final.svg" alt="" class ="icono_flecha"><a href="#">CONTACT ME</a></li>
                     <li><img src="Flecha_Final.svg" alt="" class ="icono_flecha"><a href="#">MORE INFO</a></li>
                 </ul>
+                <div class="hero-date">2026</div>
             </div>
         </div>
         <!-- About Me Section 
@@ -69,7 +70,9 @@
             </div>
             
             <div class="about-content">
-                <div class="about-img-placeholder"></div>
+                <div class="about-img-placeholder">
+                    <img src="https://ik.imagekit.io/1kpiksaft/New%20Folder/Foto%20About%20Me/Foto%20con%20texto.png?updatedAt=1767972983418" alt="">
+                </div>
                 
                 <div class="about-text-grid">
                     <div class="text-col">
@@ -107,30 +110,46 @@
                         <div class="skill-card border-blue">
                             <div class="icon-box">Ps</div>
                             <span class="skill-name">Adobe Photoshop</span>
-                            <div class="skill-fill" style="--fill: 95%"></div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 90%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-purple">
                             <div class="icon-box">Pr</div>
                             <span class="skill-name">Adobe Premier</span>
-                            <div class="skill-fill" style="--fill: 95%"></div>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 70%"></div>
+                            </div>   
                         </div>
                         
                         <div class="skill-card border-orange">
                             <div class="icon-box">Ai</div>
                             <span class="skill-name">Adobe Illustrator</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 90%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-indigo">
                             <div class="icon-box">Ae</div>
                             <span class="skill-name">Adobe After Effects</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 95%"></div>
+                            </div>
                         </div>
 
                         <div class="skill-card border-pink">
                             <div class="icon-box">Id</div>
                             <span class="skill-name">Adobe Indesign</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 100%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-blue-light">
                             <div class="icon-box">An</div>
                             <span class="skill-name">Adobe Animate</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 50%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,14 +160,23 @@
                         <div class="skill-card border-white">
                             <div class="icon-box">Gl</div>
                             <span class="skill-name">Glyphs</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 80%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-white">
                             <div class="icon-box">Fi</div>
                             <span class="skill-name">Figma</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 100%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-white">
                             <div class="icon-box">Of</div>
                             <span class="skill-name">Power Point/Word</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 100%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -158,12 +186,21 @@
                     <div class="grid-1-col">
                         <div class="skill-card border-white">
                             <span class="skill-name">Spanish</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 100%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-white">
                             <span class="skill-name">English</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 80%"></div>
+                            </div>
                         </div>
                         <div class="skill-card border-white">
                             <span class="skill-name">French</span>
+                            <div class="skill-bar">
+                                <div class="skill-fill" style="--fill: 30%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,7 +216,12 @@
         -->
         
         <div id = "projects">
-            <h2>MY PROJECTS " MY PROJECTS "</h2>
+            <div class="marquee-container">
+                <div class="marquee-track">
+                    <h2>MY PROJECTS " MY PROJECTS " MY PROJECTS " &nbsp;</h2>
+                    <h2>MY PROJECTS " MY PROJECTS " MY PROJECTS " &nbsp;</h2>
+                </div>
+            </div>
             <div class="project-group">
                 <h4 class="categoria-titulo">VISUAL IDENTITY DESIGN</h4>
                 <ul class="lista_proyecto">
