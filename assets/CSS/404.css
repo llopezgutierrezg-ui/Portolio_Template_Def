@@ -1,0 +1,397 @@
+/* --- CONFIGURACIÓN BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #f0f0f0;
+  /* Fondo gris claro de tu imagen */
+  color: #111;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  /* Evita scrollbars */
+}
+
+#error-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  z-index: 1;
+
+  /* Flor Geométrica de fondo (Marca de agua central) */
+  background-image: url("../Img/logo-svg.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 80vh;
+}
+
+/* --- CAPA DE DECORACIONES (LOS DIBUJOS) --- */
+.decorations-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Centrado perfecto */
+
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  /* TOPE PARA 1920px: Evita que se vayan a las esquinas extremas */
+
+  pointer-events: none;
+  /* Importante: para poder hacer click en el botón a través de los dibujos */
+  z-index: 0;
+  /* Detrás del texto pero delante del fondo */
+}
+
+/* Estilo común para todos los stickers */
+.sticker {
+  position: absolute;
+  width: 120px;
+  /* Tamaño base ajustable */
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* POSICIONES (Relativas al contenedor centrado) */
+/* Usamos % para que se muevan suavemente al redimensionar */
+
+/* Arriba */
+.s-1 {
+  top: 15%;
+  left: 10%;
+}
+
+/* Maceta */
+.s-2 {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 10vh;
+  min-width: 14vw;
+}
+
+/* Tumbado */
+.s-3 {
+  top: 15%;
+  right: 10%;
+}
+
+/* Boca abajo */
+
+/* Medio */
+.s-4 {
+  top: 40%;
+  right: 15%;
+}
+
+/* Corriendo der */
+.s-8 {
+  top: 60%;
+  left: 15%;
+}
+
+/* Pintando izq */
+
+/* Abajo */
+.s-5 {
+  bottom: 15%;
+  right: 10%;
+}
+
+/* De pie der */
+.s-6 {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Sentado */
+.s-7 {
+  bottom: 15%;
+  left: 10%;
+}
+
+/* De pie izq */
+
+/* --- HEADER, MAIN, FOOTER --- */
+.page-top,
+.page-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.center-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.error-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  /* Encima de los dibujos */
+}
+
+.error-code {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14rem;
+  line-height: 0.8;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.home-btn {
+  display: inline-block;
+  background-color: #8b1e22;
+  color: white;
+  padding: 15px 40px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  pointer-events: auto;
+  /* Reactivamos click */
+}
+
+.home-btn:hover {
+  background-color: #a9262b;
+}
+
+/* =========================================
+   RESPONSIVE (MEDIA QUERIES)
+   ========================================= */
+
+/* --- 1. MÓVIL PEQUEÑO (320px) --- */
+@media (max-width: 479px) {
+  #error-page {
+    padding: 20px;
+  }
+
+  /* En móviles OCULTAMOS los dibujos laterales porque no caben */
+  /* Dejamos solo uno arriba y uno abajo si quieres, o ninguno para limpiar */
+  .sticker {
+    display: none;
+  }
+
+  /* Opcional: Mostrar solo el del centro abajo pequeñito */
+  .s-6 {
+    display: block;
+    width: 80px;
+    bottom: 80px;
+    opacity: 0.5;
+  }
+
+  .error-code {
+    font-size: 6rem;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+  }
+
+  .page-top,
+  .page-bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .center-text {
+    position: static;
+    transform: none;
+    display: none;
+  }
+
+  /* Ocultamos texto largo */
+
+  .home-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- 2. MÓVIL GRANDE (480px - 767px) --- */
+@media (min-width: 480px) and (max-width: 767px) {
+  .sticker {
+    display: none;
+  }
+
+  /* Seguimos ocultando la mayoría */
+  /* Mostramos un par decorativos que no molesten al texto */
+  .s-2 {
+    display: block;
+    width: 90px;
+    top: 80px;
+  }
+
+  .s-6 {
+    display: block;
+    width: 90px;
+    bottom: 80px;
+  }
+
+  .error-code {
+    font-size: 8rem;
+  }
+}
+
+/* --- 3. TABLET (768px) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sticker {
+    display: block;
+    width: 80px;
+    /* Dibujos más pequeños para tablet */
+  }
+
+  /* Reajustamos posiciones para tablet vertical */
+  .s-4,
+  .s-8 {
+    display: none;
+  }
+
+  /* Quitamos los del medio lateral para dar aire al texto */
+
+  .error-code {
+    font-size: 10rem;
+  }
+}
+
+/* --- 4. ESCRITORIO (1024px) --- */
+@media (min-width: 1024px) {
+  .sticker {
+    width: 110px;
+  }
+
+  .error-code {
+    font-size: 14rem;
+  }
+}
+
+/* --- 5. ESCRITORIO GRANDE (1920px+) --- */
+@media (min-width: 1920px) {
+  /* Gracias al max-width: 1600px en .decorations-layer, 
+       los dibujos no se irán a los bordes extremos, 
+       se quedarán agrupados elegantemente alrededor del centro. */
+
+  .sticker {
+    width: 140px;
+  }
+
+  /* Más grandes para llenar espacio */
+  .error-code {
+    font-size: 18rem;
+  }
+}
+
+/* =========================================
+   POSICIONES CORREGIDAS (Compatibles con Animación)
+   ========================================= */
+
+/* --- Arriba --- */
+.s-1 {
+  top: 15%;
+  left: 10%;
+}
+
+/* CORREGIDO: Arriba Centro (Tumbado) */
+.s-2 {
+  top: 10%;
+  
+  /* Usamos márgenes automáticos para centrar en lugar de transform */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  
+  min-height: 10vh;
+  min-width: 14vw;
+}
+
+.s-3 {
+  top: 15%;
+  right: 10%;
+}
+
+/* --- Medio --- */
+.s-4 {
+  top: 40%;
+  right: 15%;
+}
+
+.s-8 {
+  top: 60%;
+  left: 15%;
+}
+
+/* --- Abajo --- */
+.s-5 {
+  bottom: 15%;
+  right: 10%;
+}
+
+/* CORREGIDO: Abajo Centro (Sentado) */
+.s-6 {
+  bottom: 10%;
+  
+  /* Usamos márgenes automáticos para centrar en lugar de transform */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.s-7 {
+  bottom: 15%;
+  left: 10%;
+}
+
+/* =========================================
+   ANIMACIÓN DE VIBRACIÓN / FLOTACIÓN
+   ========================================= */
+
+@keyframes float-wiggle {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-2px, 1px) rotate(-1deg); }
+    40% { transform: translate(2px, -2px) rotate(1deg); }
+    60% { transform: translate(-1px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(-0.5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Aplicamos la animación a TODOS los stickers */
+.sticker {
+    animation: float-wiggle 4s ease-in-out infinite;
+}
+
+/* --- TIEMPOS DIFERENTES (Para que se vea natural) --- */
+.s-1 { animation-duration: 3.5s; animation-delay: 0s; }
+.s-2 { animation-duration: 4.2s; animation-delay: 0.5s; }
+.s-3 { animation-duration: 3.8s; animation-delay: 1s; }
+.s-4 { animation-duration: 4.5s; animation-delay: 0.2s; }
+.s-5 { animation-duration: 4.1s; animation-delay: 1.5s; }
+.s-6 { animation-duration: 3.6s; animation-delay: 0.3s; }
+.s-7 { animation-duration: 4.3s; animation-delay: 0.8s; }
+.s-8 { animation-duration: 3.7s; animation-delay: 1.2s; }
