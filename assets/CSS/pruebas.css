@@ -163,11 +163,7 @@ img {
 /* --- ESTADO SCROLLED (Cuando bajas) --- */
 /* Esta clase la pondrá el JavaScript automáticamente */
 #navbar.scrolled {
-<<<<<<< HEAD
-    
-=======
   background-color: rgba(0, 0, 0, 0.75); /* Casi negro sólido */
->>>>>>> 15fc8038db0197f524f275bef0fbe0c5d01c7208
   color: var(--bg-color);
   backdrop-filter: blur(5px); /* Efecto cristal */
 }
