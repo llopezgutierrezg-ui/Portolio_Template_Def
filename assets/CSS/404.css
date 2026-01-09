@@ -1,4 +1,6 @@
-/* --- CONFIGURACIÓN BASE --- */
+/* =========================================
+   CONFIGURACIÓN BASE
+   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +10,15 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f0f0f0;
-  /* Fondo gris claro de tu imagen */
   color: #111;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  /* Evita scrollbars */
 }
 
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
 #error-page {
   position: relative;
   width: 100%;
@@ -26,44 +29,47 @@ body {
   padding: 40px;
   z-index: 1;
 
-  /* Flor Geométrica de fondo (Marca de agua central) */
   background-image: url("../Img/logo-svg.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 80vh;
 }
 
-/* --- CAPA DE DECORACIONES (LOS DIBUJOS) --- */
+/* =========================================
+   CAPA DE DECORACIONES
+   ========================================= */
 .decorations-layer {
   position: absolute;
-  top: 0;
+  inset: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* Centrado perfecto */
-
   width: 100%;
   height: 100%;
   max-width: 1600px;
-  /* TOPE PARA 1920px: Evita que se vayan a las esquinas extremas */
-
   pointer-events: none;
-  /* Importante: para poder hacer click en el botón a través de los dibujos */
   z-index: 0;
-  /* Detrás del texto pero delante del fondo */
+
+  /* colchón para que no invadan el centro */
+  padding: 6vh 8vw;
 }
 
-/* Estilo común para todos los stickers */
+/* =========================================
+   STICKERS (TAMAÑO UNIFICADO)
+   ========================================= */
 .sticker {
   position: absolute;
-  width: 120px;
-  /* Tamaño base ajustable */
+  width: clamp(110px, 9vw, 160px);
   height: auto;
   object-fit: contain;
   opacity: 0.9;
+
+  animation: float-wiggle 2.2s linear infinite;
+  will-change: transform;
 }
 
-/* POSICIONES (Relativas al contenedor centrado) */
-/* Usamos % para que se muevan suavemente al redimensionar */
+/* =========================================
+   POSICIONES
+   ========================================= */
 
 /* Arriba */
 .s-1 {
@@ -71,22 +77,17 @@ body {
   left: 10%;
 }
 
-/* Maceta */
 .s-2 {
   top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-height: 10vh;
-  min-width: 14vw;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
-/* Tumbado */
 .s-3 {
   top: 15%;
   right: 10%;
 }
-
-/* Boca abajo */
 
 /* Medio */
 .s-4 {
@@ -94,13 +95,10 @@ body {
   right: 15%;
 }
 
-/* Corriendo der */
 .s-8 {
-  top: 60%;
+  top: 40%;
   left: 15%;
 }
-
-/* Pintando izq */
 
 /* Abajo */
 .s-5 {
@@ -108,22 +106,21 @@ body {
   right: 10%;
 }
 
-/* De pie der */
 .s-6 {
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 3%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
-/* Sentado */
 .s-7 {
   bottom: 15%;
   left: 10%;
 }
 
-/* De pie izq */
-
-/* --- HEADER, MAIN, FOOTER --- */
+/* =========================================
+   HEADER / MAIN / FOOTER
+   ========================================= */
 .page-top,
 .page-bottom {
   display: flex;
@@ -148,7 +145,6 @@ body {
   align-items: center;
   text-align: center;
   z-index: 2;
-  /* Encima de los dibujos */
 }
 
 .error-code {
@@ -175,7 +171,6 @@ body {
   font-size: 0.9rem;
   transition: 0.3s;
   pointer-events: auto;
-  /* Reactivamos click */
 }
 
 .home-btn:hover {
@@ -183,25 +178,69 @@ body {
 }
 
 /* =========================================
-   RESPONSIVE (MEDIA QUERIES)
+   ANIMACIÓN
+   ========================================= */
+@keyframes float-wiggle {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-4px, 3px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translate(4px, -4px) rotate(1.5deg);
+  }
+  75% {
+    transform: translate(-3px, 4px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Ritmos distintos */
+.s-1 {
+  animation-duration: 1.8s;
+}
+.s-2 {
+  animation-duration: 2.2s;
+}
+.s-3 {
+  animation-duration: 2s;
+}
+.s-4 {
+  animation-duration: 2.4s;
+}
+.s-5 {
+  animation-duration: 2.1s;
+}
+.s-6 {
+  animation-duration: 1.9s;
+}
+.s-7 {
+  animation-duration: 2.3s;
+}
+.s-8 {
+  animation-duration: 2s;
+}
+
+/* =========================================
+   RESPONSIVE
    ========================================= */
 
-/* --- 1. MÓVIL PEQUEÑO (320px) --- */
+/* Móvil pequeño */
 @media (max-width: 479px) {
   #error-page {
     padding: 20px;
   }
 
-  /* En móviles OCULTAMOS los dibujos laterales porque no caben */
-  /* Dejamos solo uno arriba y uno abajo si quieres, o ninguno para limpiar */
   .sticker {
     display: none;
   }
 
-  /* Opcional: Mostrar solo el del centro abajo pequeñito */
   .s-6 {
     display: block;
-    width: 80px;
+    width: 70px;
     bottom: 80px;
     opacity: 0.5;
   }
@@ -222,12 +261,8 @@ body {
   }
 
   .center-text {
-    position: static;
-    transform: none;
     display: none;
   }
-
-  /* Ocultamos texto largo */
 
   .home-btn {
     width: 100%;
@@ -235,23 +270,23 @@ body {
   }
 }
 
-/* --- 2. MÓVIL GRANDE (480px - 767px) --- */
+/* Móvil grande */
 @media (min-width: 480px) and (max-width: 767px) {
   .sticker {
     display: none;
   }
 
-  /* Seguimos ocultando la mayoría */
-  /* Mostramos un par decorativos que no molesten al texto */
-  .s-2 {
+  .s-2,
+  .s-6 {
     display: block;
     width: 90px;
+  }
+
+  .s-2 {
     top: 80px;
   }
 
   .s-6 {
-    display: block;
-    width: 90px;
     bottom: 80px;
   }
 
@@ -260,138 +295,29 @@ body {
   }
 }
 
-/* --- 3. TABLET (768px) --- */
+/* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .sticker {
-    display: block;
-    width: 80px;
-    /* Dibujos más pequeños para tablet */
+    width: 100px;
   }
 
-  /* Reajustamos posiciones para tablet vertical */
   .s-4,
   .s-8 {
     display: none;
   }
-
-  /* Quitamos los del medio lateral para dar aire al texto */
 
   .error-code {
     font-size: 10rem;
   }
 }
 
-/* --- 4. ESCRITORIO (1024px) --- */
-@media (min-width: 1024px) {
-  .sticker {
-    width: 110px;
-  }
-
-  .error-code {
-    font-size: 14rem;
-  }
-}
-
-/* --- 5. ESCRITORIO GRANDE (1920px+) --- */
+/* Escritorio grande */
 @media (min-width: 1920px) {
-  /* Gracias al max-width: 1600px en .decorations-layer, 
-       los dibujos no se irán a los bordes extremos, 
-       se quedarán agrupados elegantemente alrededor del centro. */
-
   .sticker {
-    width: 140px;
+    width: 160px;
   }
 
-  /* Más grandes para llenar espacio */
   .error-code {
     font-size: 18rem;
   }
 }
-
-/* =========================================
-   POSICIONES CORREGIDAS (Compatibles con Animación)
-   ========================================= */
-
-/* --- Arriba --- */
-.s-1 {
-  top: 15%;
-  left: 10%;
-}
-
-/* CORREGIDO: Arriba Centro (Tumbado) */
-.s-2 {
-  top: 10%;
-  
-  /* Usamos márgenes automáticos para centrar en lugar de transform */
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  
-  min-height: 10vh;
-  min-width: 14vw;
-}
-
-.s-3 {
-  top: 15%;
-  right: 10%;
-}
-
-/* --- Medio --- */
-.s-4 {
-  top: 40%;
-  right: 15%;
-}
-
-.s-8 {
-  top: 60%;
-  left: 15%;
-}
-
-/* --- Abajo --- */
-.s-5 {
-  bottom: 15%;
-  right: 10%;
-}
-
-/* CORREGIDO: Abajo Centro (Sentado) */
-.s-6 {
-  bottom: 10%;
-  
-  /* Usamos márgenes automáticos para centrar en lugar de transform */
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
-
-.s-7 {
-  bottom: 15%;
-  left: 10%;
-}
-
-/* =========================================
-   ANIMACIÓN DE VIBRACIÓN / FLOTACIÓN
-   ========================================= */
-
-@keyframes float-wiggle {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(-2px, 1px) rotate(-1deg); }
-    40% { transform: translate(2px, -2px) rotate(1deg); }
-    60% { transform: translate(-1px, 2px) rotate(0deg); }
-    80% { transform: translate(1px, -1px) rotate(-0.5deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-/* Aplicamos la animación a TODOS los stickers */
-.sticker {
-    animation: float-wiggle 4s ease-in-out infinite;
-}
-
-/* --- TIEMPOS DIFERENTES (Para que se vea natural) --- */
-.s-1 { animation-duration: 3.5s; animation-delay: 0s; }
-.s-2 { animation-duration: 4.2s; animation-delay: 0.5s; }
-.s-3 { animation-duration: 3.8s; animation-delay: 1s; }
-.s-4 { animation-duration: 4.5s; animation-delay: 0.2s; }
-.s-5 { animation-duration: 4.1s; animation-delay: 1.5s; }
-.s-6 { animation-duration: 3.6s; animation-delay: 0.3s; }
-.s-7 { animation-duration: 4.3s; animation-delay: 0.8s; }
-.s-8 { animation-duration: 3.7s; animation-delay: 1.2s; }
