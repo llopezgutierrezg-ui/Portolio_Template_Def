@@ -9,7 +9,6 @@
   --color-rojo-base: #891721;
 
   /* --- TIPOGRAFÍA FLUIDA --- */
-  /* Clamp permite definir: (mínimo, tamaño ideal basado en ancho pantalla, máximo) */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
   --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
@@ -50,7 +49,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* Base */
+  font-size: 16px;
 }
 
 body {
@@ -59,7 +58,7 @@ body {
   color: #ffffff;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Evita scroll lateral accidental */
+  overflow-x: hidden;
   line-height: 1.5;
 }
 
@@ -82,41 +81,31 @@ a {
   margin-top: 50px;
 }
 
-/* --- CAPAS Z-INDEX --- */
-#skills-section,
-#projects,
-#full-portfolio-container,
-.parallax-stack,
-.footer {
-    position: relative;
-    z-index: 2;
-    background-color: var(--color-bg); /* Asegura que tape al hero sticky */
-}
-
 /* =========================================
-   1. HERO SECTION
+   1. HERO SECTION (CORREGIDO)
    ========================================= */
 #hero {
-  height: 100vh; /* Altura completa */
-  min-height: 600px; /* Evita que se aplaste en pantallas muy bajitas */
+  height: 100vh;
+  min-height: 600px;
   width: 100%;
   padding: 80px 40px 40px 40px; 
   
   /* Parallax Sticky */
   position: sticky;
   top: 0;
-  z-index: 0;
+  z-index: 0; /* Se queda al fondo */
   
   background-image: url(../Img/Frame_1.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Centrado Flexible */
+  /* Distribución vertical */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Centrado vertical */
   align-items: center;
+  gap: 20px; /* Espacio entre el Titulo grande y el submenú */
 }
 
 /* Navbar */
@@ -164,33 +153,37 @@ a {
   border-color: #ffffff;
 }
 
-/* Bloque del Título */
+/* Bloque del Título (Alineación y Espaciado) */
 #Titulo {
   display: grid;
-  grid-template-columns: 1fr auto; /* Texto gigante | Texto derecho */
-  align-items: center;
+  /* Dos columnas: Texto Gigante | Texto descriptivo */
+  grid-template-columns: 1fr auto; 
+  grid-template-rows: auto auto; /* Dos filas para permitir que el H1 ocupe altura */
+  align-items: start;
   width: 100%;
-  max-width: 1600px; /* Límite para pantallas ultra anchas */
+  max-width: 1600px;
+  margin-top: auto; /* Empuja un poco hacia abajo si sobra espacio */
+  margin-bottom: auto;
 }
 
 #Titulo h1 {
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 2; /* Ocupa todo el alto vertical a la izquierda */
   font-family: "Helvetica Neue Perso Roman", sans-serif;
   
-  /* ESTO ES LA MAGIA: El texto escala fluidamente */
-  /* Mínimo 4rem, Ideal 18% del ancho, Máximo 22rem */
+  /* Tamaño fluido */
   font-size: clamp(4rem, 18vw, 22rem);
   
   letter-spacing: clamp(5px, 1vw, 20px);
   line-height: 0.8;
   text-transform: uppercase;
   margin: 0;
+  color: #fff;
 }
 
 .quote-icon {
     display: inline-block;
-    height: 0.3em; /* Relativo al tamaño de la fuente del H1 */
+    height: 0.3em;
     width: auto;
     vertical-align: top;
     margin-left: 0.1em;
@@ -199,47 +192,48 @@ a {
 #Titulo h3 {
   grid-column: 2;
   grid-row: 1;
-  justify-self: end;
-  text-align: left;
-  align-self: end;
-  font-family: "Helvetica Neue Perso Roman", sans-serif;
   
-  /* Márgenes y tamaño fluidos */
-  margin-top: clamp(50px, 10vh, 150px);
+  /* Alineación específica solicitada */
+  justify-self: start; /* Se pega a la izquierda de su columna */
+  text-align: left;
+  
+  /* Ajuste vertical para alinearse visualmente con la parte superior o la "H" */
+  align-self: end; /* Baja el texto para alinearse con la parte baja de la primera linea "SY" */
+  margin-bottom: 20px; /* Ajuste fino */
+  
+  font-family: "Helvetica Neue Perso Roman", sans-serif;
   margin-right: clamp(20px, 10vw, 240px);
   font-size: clamp(0.8rem, 1vw, 1.2rem);
-  
   font-weight: 700;
   text-transform: uppercase;
-  max-width: 200px;
+  max-width: 250px;
   line-height: 1.4;
 }
 
 #Titulo .logo {
   grid-column: 2;
   grid-row: 2;
-  justify-self: end;
+  justify-self: start;
   align-self: start;
-  margin-top: 20px;
-  margin-right: clamp(60px, 12vw, 285px);
+  margin-top: 10px;
   height: 50px;
-  padding-left: 0;
+  /* Quitamos padding-left y usamos margin para alinear con el H3 si se desea */
 }
 
-/* Submenú (Flechas abajo) */
+/* Submenú */
 #subMenu {
-    position: absolute;
-    bottom: 40px;
-    left: 40px;
-    right: 40px;
+    /* Quitamos el absolute bottom para que fluya con el flex del container #hero */
+    width: 100%;
+    max-width: 1600px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    pointer-events: none; /* Deja pasar clicks al fondo si es necesario */
+    margin-top: 60px; /* Separación explícita del título (Error 3 corregido) */
+    pointer-events: none;
 }
 
 #subMenu ul, #subMenu .hero-date {
-    pointer-events: auto; /* Reactiva clicks */
+    pointer-events: auto;
 }
 
 .subMenuItems li {
@@ -271,12 +265,16 @@ a {
 }
 
 /* =========================================
-   2. ABOUT ME SECTION
+   2. ABOUT ME SECTION (CORREGIDO - ERROR 1)
    ========================================= */
 #about-section {
-  background-color: #f4f4f4;
+  position: relative; /* CRÍTICO: Para que el z-index funcione */
+  z-index: 10;        /* CRÍTICO: Mayor que el hero (0) */
+  background-color: #f4f4f4; /* Fondo sólido para tapar el hero al hacer scroll */
+  
   padding: 80px 40px;
   color: #111;
+  width: 100%;
 }
 
 .about-header h2 {
@@ -305,7 +303,7 @@ a {
 .about-img-placeholder {
   flex: 1;
   min-height: 400px;
-  max-height: 70vh;
+  /* Quitamos max-height estricto para evitar cortes */
 }
 
 .about-img-placeholder img {
@@ -333,9 +331,11 @@ a {
 }
 
 /* =========================================
-   3. SKILLS SECTION
+   3. SKILLS SECTION (CORREGIDO - ERRORES 5 y 6)
    ========================================= */
 #skills-section {
+  position: relative;
+  z-index: 10; /* Asegura que se vea */
   background-color: var(--color-bg);
   color: #ffffff;
   padding: 80px 40px;
@@ -362,30 +362,31 @@ a {
 
 .skills-container {
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap; /* CRÍTICO: Permite que bajen de línea */
+  gap: 60px; /* AUMENTADO: Para separar los grupos principales (Error 5) */
+  flex-wrap: wrap;
 }
 
 .skill-group {
     flex: 1;
-    min-width: 280px; /* Evita que se aplasten demasiado */
+    min-width: 250px;
 }
 
 .adobe-group {
-    flex: 2; /* Ocupa más espacio si puede */
+    flex: 2; /* Adobe group ocupa el doble */
+    min-width: 500px; /* Forzamos ancho para que quepan las columnas */
 }
 
 .grid-2-col {
   display: grid;
-  /* Grid fluido automático */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 20px;
+  /* CORREGIDO: Forzamos 2 columnas estrictas (Error 6) */
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px; /* Espaciado entre items de la grid (Error 5) */
 }
 
 .grid-1-col {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px; /* Espaciado vertical (Error 5) */
 }
 
 .skill-card {
@@ -394,7 +395,7 @@ a {
     padding: 15px;
     border-radius: 12px;
     border: 1px solid #fff;
-    flex-wrap: wrap; /* Permite que la barra baje */
+    flex-wrap: wrap; 
 }
 
 .icon-box {
@@ -442,9 +443,11 @@ a {
 .border-white { border-color: #ffffff; }
 
 /* =========================================
-   4. PROJECTS SECTION
+   4. PROJECTS SECTION (CORREGIDO - ERROR 7)
    ========================================= */
 #projects {
+  position: relative;
+  z-index: 10;
   padding: 60px 0;
   background-color: #dbd5d5;
   overflow: hidden;
@@ -510,17 +513,20 @@ a {
 }
 
 .lista_proyecto h3 {
-  font-family: "Lora";
+  font-family: "Lora", serif;
   font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 400;
   color: #1a1a1a;
   margin: 0;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: uppercase; /* Por defecto MAYUS */
+  transition: all 0.3s ease;
 }
 
-.lista_proyecto h3:hover {
-  font-family: "Lora italic";
+/* CORREGIDO: Hover a minúsculas */
+.lista_proyecto li:hover h3 {
+  font-family: "Lora italic", serif;
+  text-transform: lowercase !important; 
 }
 
 .lista_proyecto p {
@@ -533,9 +539,11 @@ a {
 }
 
 /* =========================================
-   5. GALLERY SECTION
+   5. GALLERY SECTION (CORREGIDO - ERROR 8 y 9)
    ========================================= */
 #full-portfolio-container {
+  position: relative;
+  z-index: 10;
   width: 100%;
   background-color: #f4f4f4;
   color: #111;
@@ -552,13 +560,19 @@ a {
 }
 
 .screen-slide {
-  /* Quitamos height 100vh fijo para evitar cortes en pantallas pequeñas */
   min-height: 100vh;
   width: 100%;
   padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* CORREGIDO: Estilos para el header cuando está dentro de split-screen */
+.split-screen .category-header.full-width {
+    flex-basis: 100%;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .category-header {
@@ -576,19 +590,16 @@ a {
 
 .img-container {
   width: 100%;
-  flex-grow: 1;
   background-color: #111;
   overflow: hidden;
   position: relative;
-  /* Altura mínima segura */
-  min-height: 300px; 
 }
 
 .img-container img, 
 .img-container video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Recorta la imagen para llenar el espacio */
   display: block;
 }
 
@@ -605,6 +616,7 @@ a {
 /* Split Screen Logic */
 .split-screen {
   flex-direction: row;
+  flex-wrap: wrap; /* CRÍTICO: Permite que el header full-width ocupe su línea */
 }
 
 .col {
@@ -612,14 +624,24 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 300px; /* Evita que se aplasten demasiado */
+}
+
+/* CORREGIDO: Igualar alturas en split screen (Error 8) */
+.split-screen .col .img-container {
+    height: 50vh; /* Altura fija relativa a la pantalla para uniformidad */
+    min-height: 400px;
+    flex-grow: 0; 
 }
 
 /* =========================================
-   6. CONTACT & FOOTER
+   6. FOOTER & CONTACT (CORREGIDO - ERROR 10 y 11)
    ========================================= */
 .parallax-stack {
+  position: relative;
+  z-index: 2; /* Sobre el hero */
   background-color: var(--bg-color);
-  padding: 0 40px 40px 40px;
+  /* padding se maneja internamente en contact */
 }
 
 .sticky-img-container {
@@ -628,6 +650,12 @@ a {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+}
+
+.sticky-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .img-1 { z-index: 3; }
@@ -642,8 +670,10 @@ a {
   padding: 100px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center; /* Centrar contenido verticalmente */
+  align-items: center;     /* Centrar contenido horizontalmente */
   min-height: 80vh;
+  text-align: center;
 }
 
 .contact-header h2 {
@@ -654,8 +684,10 @@ a {
 
 .contact-methods {
   display: flex;
+  justify-content: center; /* Centrar las tarjetas */
   gap: 20px;
   margin: 40px 0;
+  width: 100%;
   flex-wrap: wrap;
 }
 
@@ -664,12 +696,25 @@ a {
   align-items: center;
   border: 1px solid #fff;
   padding: 20px;
-  flex: 1;
-  min-width: 280px;
+  /* CORREGIDO: Evitar que se estiren infinitamente */
+  width: 100%;
+  max-width: 400px; 
+  flex: 1 1 300px; 
+  text-align: left;
 }
 
+.method-info {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CORREGIDO: Centrar formulario (Error 11) */
 .contact-form {
+  width: 100%;
   max-width: 800px;
+  margin: 0 auto; /* Centrado automático */
+  text-align: left; /* Textos de labels a la izquierda */
 }
 
 .form-group {
@@ -691,6 +736,11 @@ a {
   padding: 15px;
 }
 
+.form-footer {
+    display: flex;
+    justify-content: center; /* Botón centrado */
+}
+
 .send-btn {
     background-color: var(--color-rojo-base);
     color: white;
@@ -699,9 +749,16 @@ a {
     cursor: pointer;
     font-size: 1rem;
     text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #a0202b;
 }
 
 .footer {
+  position: relative;
+  z-index: 20;
   background-color: #000;
   padding: 20px 40px;
   color: #888;
@@ -715,10 +772,10 @@ a {
 }
 
 /* =========================================
-   7. MEDIA QUERIES (EL RESPONSIVE)
+   7. MEDIA QUERIES (RESPONSIVE FIXES)
    ========================================= */
 
-/* --- BOTÓN HAMBURGUESA (Por defecto oculto) --- */
+/* --- BOTÓN HAMBURGUESA --- */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -740,29 +797,45 @@ a {
 
 
 /* --- TABLET Y MENOR (1024px) --- */
-/* Ajustes generales para que no se pegue a los bordes */
 @media (max-width: 1024px) {
-    #hero { padding-left: 20px; padding-right: 20px; }
+    #hero { padding: 80px 20px; }
     
-    #Titulo { grid-template-columns: 1fr; text-align: center; }
-    #Titulo h1 { grid-column: 1; grid-row: 1; text-align: center; }
+    #Titulo { 
+        grid-template-columns: 1fr; /* Una columna */
+        grid-template-rows: auto auto auto;
+        text-align: center; 
+        justify-items: center;
+    }
+    
+    #Titulo h1 { 
+        grid-column: 1; grid-row: 1; 
+        text-align: center; 
+        font-size: 18vw; /* Ajuste para evitar overflow */
+    }
+    
     #Titulo h3 { 
         grid-column: 1; grid-row: 2; 
-        justify-self: center; margin: 20px 0; text-align: center; 
+        justify-self: center; align-self: center;
+        margin: 20px 0; 
+        text-align: center; 
         font-size: 1rem;
+        margin-right: 0;
     }
-    #Titulo .logo { display: none; } /* Ocultamos el logo pequeño decorativo */
+    
+    #Titulo .logo { display: none; } 
     
     .about-content { flex-direction: column; }
     .about-text-grid { flex-direction: column; }
-    .text-col { padding-left: 0; }
     
-    .split-screen { gap: 20px; }
+    /* Adobe Skills a 1 columna en tablet */
+    .adobe-group { min-width: auto; }
+    .skills-container { flex-direction: column; gap: 40px; }
+    
+    .split-screen { gap: 40px; }
 }
 
-/* --- ACTIVACIÓN MENÚ MÓVIL (900px) --- */
+/* --- MÓVIL (900px) --- */
 @media (max-width: 900px) {
-    /* Navbar Móvil */
     .hamburger { display: block; }
     .menu {
         position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
@@ -775,89 +848,62 @@ a {
 
     /* Hero en Móvil */
     #hero {
-        padding-top: 80px;
-        align-items: flex-start; /* Todo a la izquierda */
+        align-items: flex-start;
         text-align: left;
         justify-content: center;
         height: auto;
         min-height: 100vh;
     }
 
-    #Titulo { display: block; width: 100%; margin: 0; }
+    #Titulo { 
+        display: flex; flex-direction: column; align-items: flex-start;
+        text-align: left;
+    }
+    
     #Titulo h1 {
-        font-size: 25vw; /* Título masivo a la izquierda */
+        font-size: 25vw;
         line-height: 0.8;
         text-align: left;
         margin-left: -5px;
     }
+    
     #Titulo h3 {
-        margin: 30px 0 0 0;
+        margin: 20px 0 0 0;
         text-align: left;
         max-width: 200px;
-        justify-self: start;
-        align-self: start;
+        align-self: flex-start;
     }
 
     /* Submenú Móvil */
     #subMenu {
-        position: relative;
-        bottom: auto; left: auto; right: auto;
         flex-direction: column-reverse;
         align-items: flex-start;
         margin-top: 40px;
-        padding: 0;
     }
-    .subMenuItems { display: none; } /* Ocultamos lista redundante */
+    .subMenuItems { display: none; } 
     .hero-date { margin: 0; text-align: left; font-size: 1.2rem; }
 
     /* Galería Móvil */
     .split-screen { flex-direction: column; }
-    .screen-slide {
-        height: auto !important; /* Altura automática */
-        min-height: auto !important;
-        padding: 40px 20px;
-    }
-    .img-container { height: 300px; }
-    .text-block { 
-        flex-grow: 0; 
-        height: auto; 
-        overflow: visible; /* Elimina scroll interno */
+    .col { width: 100%; }
+    
+    .split-screen .col .img-container {
+        height: 300px; /* Altura menor para móvil */
     }
 }
 
-/* --- MÓVIL ESTÁNDAR (480px) --- */
+/* --- MÓVIL PEQUEÑO (480px) --- */
 @media (max-width: 480px) {
-    #hero { padding: 80px 20px 20px 20px; }
+    #hero { padding: 80px 20px; }
     
-    #projects { padding: 40px 0; }
-    .project-group { padding: 0 20px; }
-    /* Apilar proyectos */
+    /* Grid de skills a 1 sola columna en móvil */
+    .grid-2-col { grid-template-columns: 1fr; }
+    
     .lista_proyecto li { flex-direction: column; gap: 5px; border-bottom: 1px solid #ccc; padding-bottom: 15px; }
     .lista_proyecto h3 { font-size: 2.5rem; }
     
     .about-header h2 { font-size: 3.5rem; }
     
     #contact-section { padding: 60px 20px; }
-    .contact-methods { flex-direction: column; }
-    .form-group { margin-bottom: 20px; }
-}
-
-/* --- MÓVIL PEQUEÑO (320px) --- */
-@media (max-width: 360px) {
-    :root { --text-base: 0.9rem; } /* Reducir texto base */
-    #Titulo h1 { font-size: 22vw; } /* Evita scroll horizontal */
-    .skills-header h2 { font-size: 2rem; }
-    .menu a { font-size: 1.2rem; }
-}
-
-/* --- PANTALLAS GRANDES (1920px+) --- */
-@media (min-width: 1921px) {
-    body {
-        /* Contenedor central para que no se desparrame */
-        max-width: 1920px;
-        margin: 0 auto;
-        border-left: 1px solid #333;
-        border-right: 1px solid #333;
-    }
-    #hero { height: 80vh; min-height: 800px; }
+    .contact-methods { flex-direction: column; align-items: center; }
 }
