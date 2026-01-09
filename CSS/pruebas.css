@@ -1,60 +1,3 @@
-:root {
-  --bg-color: #f0f0f0;
-  --color-bg: #0f0f0f; /* Near-black background */
-  --color-bg-alt: #1a1a1a; /* Slightly lighter for depth/sections */
-  --color-text: #f5f5f5; /* Off-white for readability (not pure white) */
-  --color-text-muted: #a0a0a0; /* Subdued text for secondary content */
-  --color-accent: #6366f1; /* Indigo — primary brand color */
-  --color-accent-hover: #818cf8; /* Lighter indigo for hover states */
-  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem); /* 12px → 14px */
-  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem); /* 14px → 16px */
-  --text-base: clamp(
-    1rem,
-    0.9rem + 0.5vw,
-    1.125rem
-  ); /* 16px → 18px (body text) */
-  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem); /* 18px → 20px */
-  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); /* 20px → 24px */
-  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem); /* 24px → 32px */
-  --text-3xl: clamp(
-    2rem,
-    1.5rem + 2.5vw,
-    3rem
-  ); /* 32px → 48px (section titles) */
-  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 4rem);
-  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem); /* 4px → 8px */
-  --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem); /* 8px → 12px */
-  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem); /* 16px → 24px */
-  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem); /* 24px → 40px */
-  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem); /* 32px → 64px */
-  --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* "Power2.out" equivalent */
-  --duration-normal: 0.6s; /* Default animation duration */
-}
-
-@font-face {
-  font-family: "Helvetica Neue Perso";
-  src: url("../Font/helvetica-neue-5/HelveticaNeueMedium.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: "Helvetica Neue Perso Roman";
-  src: url("../Font/helvetica-neue-5/HelveticaNeueRoman.otf") format("opentype");
-}
-.base-margin-top {
-  margin-top: 50px;
-}
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 /* --- 1. Configuración General y Fondo --- */
 * {
   box-sizing: border-box;
@@ -62,107 +5,43 @@ html {
   padding: 0;
 }
 
-#skills-section,
-#projects,
-#full-portfolio-container,
-.parallax-stack,
-.footer {
-    position: relative;  /* Obligatorio */
-    z-index: 2;          /* Mayor que 0 para tapar al Hero */
-    
-}
-
 body {
-  font-family: "Helvetica Neue Perso", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Tipografía limpia sans-serif */
   background-color: #0d0d0d; /* Fondo casi negro */
   color: #ffffff; /* Texto blanco */
-
-  margin: 0;
-  padding: 0;
-  width: 100%;
-
-  /* CAMBIO CLAVE: */
-  height: auto; /* Dejamos que crezca lo que necesite */
-  min-height: 100vh; /* Mínimo la pantalla, pero puede crecer */
-
-  overflow-x: hidden; /* Ocultamos desbordamiento lateral */
-  overflow-y: auto;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+  height: 100vh; /* Altura completa de la ventana */
+  /*overflow: hidden; Evita el scroll si quieres un efecto de pantalla fija */
 }
 
 /* El contenedor principal */
 #hero {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   padding-left: 20px;
   padding-bottom: 40px;
   padding-right: 40px;
+  padding-top: 30px;
   /* Margen alrededor de toda la pantalla */
   position: relative; /* Necesario para posicionar elementos absolutos dentro */
-  background-image: url(../../Frame_1.jpg);
+  background-image: url(../Frame_1.jpg);
   background-size: cover; /* Cubre toda la ventana, escalando si es necesario */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat;
-
-  /* --- CAMBIOS PARALLAX --- */
-  position: sticky; /* Se pega al techo */
-  top: 0; /* Justo en el borde superior */
-  z-index: 0; /* Se queda al fondo */
-
-  /* --- AQUÍ ESTÁ EL ARREGLO DEL LAYOUT --- */
-
-  /* 1. Compensamos que el menú ahora flota (fixed) */
-
-  /* 2. Activamos Flexbox para controlar la posición */
-  display: flex;
-  flex-direction: column; /* Elementos uno debajo de otro */
-
-  /* 3. Centramos el título verticalmente en el espacio disponible */
-  justify-content: center;
-
-  box-sizing: border-box; /* Vital para que el padding no rompa el ancho */
+  /* IMAGEN DE FONDO (Opcional): Descomenta y pon tu ruta si tienes la foto del cielo */
+  /* background: url('tu-fondo-ciudad.jpg') no-repeat center center/cover; */
 }
 
 /* --- 2. Barra de Navegación (Navbar) --- */
 #navbar {
-  /* --- SE QUEDA FIJO EN LA PANTALLA --- */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%; /* Ocupa todo el ancho */
-
-  /* --- CAPA MÁXIMA --- */
-  z-index: 1000; /* Debe ser mayor que el Contact (10) y que el Stack (2) */
-
-  /* --- ESTÉTICA --- */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo a la izq, Menú a la der */
   align-items: center;
-
-  /* Ajustamos el padding para que no se pegue a los bordes */
-  padding: 10px 20px;
-
-  /* Transición suave por si quieres cambiarlo con JS luego */
-  transition: all 0.3s ease;
-  background-color: transparent;
-}
-/* --- ESTADO SCROLLED (Cuando bajas) --- */
-/* Esta clase la pondrá el JavaScript automáticamente */
-#navbar.scrolled {
-  background-color: rgba(137, 23, 33, 0.75); /* Casi negro sólido */
-  color: var(--bg-color);
-  backdrop-filter: blur(5px); /* Efecto cristal */
+  margin-bottom: 60px; /* Separación con el título gigante */
 }
 
 .logo {
   height: 40px; /* Ajusta según tu logo real */
   width: auto;
-  padding-left: 40px;
   filter: invert(1); /* Truco: si tu logo es negro, esto lo vuelve blanco */
 }
 
@@ -180,23 +59,23 @@ img {
   text-transform: uppercase;
   letter-spacing: 1px;
 
-  /* --- CONFIGURACIÓN DEL ÓVALO --- */
+  /* --- LA SOLUCIÓN ANTI-BAILE --- */
 
-  /* 1. Hacemos que el enlace se comporte como una caja */
+  /* 1. Hacemos que el enlace se comporte como una caja para respetar medidas */
   display: inline-block;
 
-  /* 2. Espacio interno: AUMENTADO LADOS para que sea un óvalo ancho */
-  /* Antes: 10px 30px. Ahora: 12px arriba/abajo, 50px lados (ajústalo si quieres más/menos ancho) */
-  padding: 12px 50px;
+  /* 2. Definimos el espacio del óvalo DESDE EL PRINCIPIO (no solo en hover) */
+  padding: 10px 30px;
 
-  /* 3. Borde invisible (para evitar el baile al hacer hover) */
+  /* 3. Borde invisible: Ocupa 1px de espacio pero no se ve. 
+       Así, cuando hagas hover, el espacio ya está reservado. */
   border: 1px solid transparent;
 
-  /* 4. LA FORMA: 50% crea una elipse perfecta. 1000px creaba una píldora recta. */
-  border-radius: 50%;
+  /* 4. Forma de píldora (óvalo) */
+  border-radius: 50px;
 
   /* 5. Transición suave */
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 /* Estado HOVER (al pasar el ratón) */
@@ -207,71 +86,44 @@ img {
 
 /* --- 3. Sección del Título Gigante (H1 + H3) --- */
 #Titulo {
-  font-family: "Helvetica Neue Perso Roman", sans-serif;
-
-  display: grid;
-  /* Columna 1: Todo el espacio libre (H1). Columna 2: Ajustada al contenido (Texto/Icono) */
-  grid-template-columns: 1fr auto;
-  /* Dos filas: Fila 1 para el texto H3, Fila 2 para el icono */
-  grid-template-rows: auto auto;
-
-  align-items: center;
-  width: 100%;
-  margin-top: -80px;
+  display: flex; /* Ponemos el H1 y el H3 lado a lado */
+  align-items: center; /* Alineados al centro verticalmente */
+  justify-content: space-between; /* Uno a cada extremo */
+  height: 60vh; /* Ocupa gran parte de la altura central */
 }
 
 #Titulo h1 {
-  /* El H1 se queda a la izquierda y ocupa las 2 filas de alto */
-  grid-column: 1;
-  grid-row: 1 / span 2;
-
-  font-family: "Helvetica Neue Perso Roman", sans-serif;
-  font-size: 20rem;
-  letter-spacing: 20px;
-  line-height: 0.8;
+  font-size: 20vw; /* TAMAÑO GIGANTE relativo al ancho de pantalla */
+  line-height: 0.8; /* Reduce el espacio entre líneas */
   text-transform: uppercase;
 
-  max-width: 100%;
+  /* Truco para que rompa la línea si es necesario */
+  max-width: 70%;
   word-wrap: break-word;
 }
 
 /* Contenedor para el texto de la derecha (H3 + Logo pequeño) */
 /* Nota: En tu HTML el h3 y la img están sueltos, el CSS asume que están tras el H1 */
 #Titulo h3 {
-  /* El Texto se va a la Columna 2, Fila 1 (Arriba) */
-  grid-column: 2;
-  grid-row: 1;
-
-  /* Alineación a la derecha */
-  justify-self: end;
-  text-align: left;
-  align-self: end; /* Se pega a la parte baja de su celda */
-
-  font-family: "Helvetica Neue Perso Roman", sans-serif;
-  margin-top: 150px;
-  margin-right: 240px;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
+  text-align: left;
   max-width: 200px;
   line-height: 1.4;
 }
 
+/* Si la segunda imagen .logo está dentro de #Titulo, la movemos debajo del h3 */
 #Titulo .logo {
-  /* El Icono se va a la Columna 2, Fila 2 (Debajo del texto) */
-  grid-column: 2;
-  grid-row: 2;
-
-  /* Alineación a la derecha */
-  justify-self: end;
-  align-self: start; /* Se pega a la parte alta (cerca del texto) */
-
   display: block;
   margin-top: 20px;
-  margin-right: 300px;
-  height: 50px;
-  padding-left: 0; /* Quitamos el padding-left que tenías antes, ya no hace falta */
-  filter: invert(1);
+  height: 50px; /* Tamaño del icono circular */
+}
+
+/* Agrupamos visualmente H3 e imagen a la derecha usando Flex en el padre o márgenes */
+/* Dado tu HTML, sugiero usar margen automático para empujar el contenido derecho */
+#Titulo > *:not(h1) {
+  margin-left: auto; /* Esto empuja todo lo que no sea el H1 a la derecha */
 }
 
 /* --- 4. Submenú Inferior Izquierda (Flechas) --- */
@@ -292,10 +144,9 @@ img {
 }
 
 .subMenuItems a {
-  font-family: "Helvetica Neue Perso Roman", sans-serif;
   text-decoration: none;
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
   margin-left: 15px; /* Espacio entre flecha y texto */
@@ -304,7 +155,7 @@ img {
 
 /* Estilo para las flechas */
 .icono_flecha {
-  width: 100px; /* Flechas largas */
+  width: 40px; /* Flechas largas */
   height: auto;
   filter: invert(1); /* Vuelve blancas las flechas si son imágenes negras */
 }
@@ -323,10 +174,6 @@ about me
   background-color: #f4f4f4;
   padding: 60px 40px;
   font-family: "Helvetica Neue", Arial, sans-serif;
-
-  /* --- CAMBIOS PARALLAX --- */
-  position: relative; /* Necesario para que el z-index funcione */
-  z-index: 1; /* Mayor que el Hero (0) para taparlo */
 }
 
 .about-header {
@@ -344,7 +191,7 @@ about me
 
 .about-header h3 {
   color: #9e2a2b;
-  font-size: 1.33rem;
+  font-size: 1.2rem;
   margin-top: 15px;
   font-weight: 600;
   text-transform: uppercase;
@@ -377,7 +224,6 @@ about me
 
 .text-col {
   flex: 1;
-  padding-left: 40px;
 }
 
 .text-col p {
@@ -457,7 +303,6 @@ skills
 [data-reveal-stagger].revealed .skill-fill {
   width: var(--fill);
 }
-
 .adobe-group {
   flex: 2;
   min-width: 300px;
@@ -589,7 +434,6 @@ projects
   font-size: 0.9rem;
   font-weight: bold;
   text-transform: uppercase;
-  padding-top: 20px;
   margin-bottom: 20px;
   letter-spacing: 0.5px;
 }
@@ -598,7 +442,7 @@ projects
 .lista_proyecto {
   list-style: none;
   padding: 0;
-  margin: 50px 0 70px 0;
+  margin: 0;
 }
 
 /* 3. El Item (LI) - Contenedor flexible */
@@ -606,7 +450,7 @@ projects
   display: flex; /* Pone el H3 y el P en la misma línea */
   align-items: last baseline; /* Alinea el texto pequeño a la base del grande (CLAVE) */
   flex-wrap: wrap; /* Permite que baje si no cabe en móvil */
-  margin-bottom: 30px; /* Espacio entre proyectos */
+  margin-bottom: 10px; /* Espacio entre proyectos */
   gap: 15px; /* Espacio entre el título grande y la descripción */
 }
 
@@ -624,8 +468,8 @@ projects
 /* 5. Texto Pequeño (P) - Descripción */
 .lista_proyecto p {
   font-family: "Helvetica Neue", Arial, sans-serif; /* Volvemos a Sans-serif */
-  font-size: 0.55rem; /* Letra muy pequeña */
-  color: #292929; /* Gris */
+  font-size: 0.75rem; /* Letra muy pequeña */
+  color: #555; /* Gris */
   margin: 0;
   line-height: 1.2; /* Líneas pegaditas */
   max-width: 120px; /* Fuerza el salto de línea si el texto es largo */
@@ -696,28 +540,8 @@ gallery
 .img-container {
   width: 100%;
   height: 75%; /* Reducido un poco para asegurar que quepa el texto */
-  background-color: #111110;
+  background-color: #ccc;
   flex-shrink: 0; /* PROHIBIDO ENCOGERSE */
-}
-
-.img-container.landscape video {
-  width: 100%;
-  height: 100%;
-  border: none;
-  pointer-events: none;
-}
-video::--webkit-media-controls {
-  display: none;
-}
-.img-container.landscape img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.img-container.portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Texto (Ocupa el resto) */
@@ -736,7 +560,7 @@ video::--webkit-media-controls {
 .split-screen {
   flex-direction: row; /* Elementos en horizontal */
   flex-wrap: wrap; /* Permite que si hay un header, ocupe el 100% y las columnas bajen */
-  gap: 40px; /* Quitamos gap del padre, lo gestionamos dentro */
+  gap: 0; /* Quitamos gap del padre, lo gestionamos dentro */
 }
 
 /* Ajuste especial para cuando hay Header en Split */
@@ -751,6 +575,8 @@ video::--webkit-media-controls {
   height: 100%; /* Altura completa */
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  padding: 0 20px; /* Espacio lateral entre columnas */
 
   /* Si hay header arriba, restamos su altura para que no se salga */
   height: calc(100% - 50px);
@@ -771,62 +597,17 @@ footer
 
 
 */
-/* --- CONTENEDOR PRINCIPAL --- */
-.parallax-stack {
-  background-color: var(--bg-color); /* Fondo claro para contraste */
-  padding: 0px 40px;
-  width: 100%;
-  /* No ponemos height, la altura la dan las imágenes apiladas */
-}
-
-/* --- EL CONTENEDOR DE CADA IMAGEN (La carta adhesiva) --- */
-.sticky-img-container {
-  position: sticky;
-  top: 0;
-
-  width: 100%;
-  height: 100vh; /* Ocupa toda la pantalla */
-  overflow: hidden; /* Corta lo que sobre de la imagen */
-
-  /* Sombra opcional para distinguir las capas al subir */
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* --- ESTILO DE LA IMAGEN HTML --- */
-.sticky-img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* MAGIA: Hace lo mismo que background-size: cover */
-  display: block; /* Elimina espacios blancos extraños abajo */
-}
-
-/* --- LOS PISOS (Z-INDEX) --- */
-/* Cada una debe estar por encima de la anterior */
-.img-1 {
-  z-index: 3;
-}
-.img-2 {
-  z-index: 4;
-}
-.img-3 {
-  z-index: 5;
-}
-
 #contact-section {
   background-color: #0d0d0d;
   color: #ffffff;
   font-family: "Helvetica Neue", Arial, sans-serif;
 
-  position: relative; /* Obligatorio para que funcione z-index */
-  z-index: 10; /* Un número alto para que tape a las fotos (que tienen 1, 2, 3) */
-  background-color: #0d0d0d; /* Obligatorio: si no tiene color, las fotos se verán detrás */
-
-  /* El resto de tus estilos... */
-  display: flex;
-  flex-direction: column;
-  padding: 80px 100px;
-  justify-content: space-between;
-  min-height: 100vh;
+  /* LA CLAVE: */
+  height: 100vh; /* Altura exacta de la pantalla */
+  display: flex; /* Activamos Flexbox */
+  flex-direction: column; /* Orden vertical */
+  padding: 80px 100px; /* Padding un poco más ajustado */
+  justify-content: space-between; /* Distribuye los elementos uniformemente */
 }
 
 /* --- Encabezado --- */
@@ -861,7 +642,7 @@ footer
   display: flex;
   align-items: center;
   border: 1px solid #fff;
-  padding: 25px 20px;
+  padding: 15px 20px;
   width: 100%;
   max-width: 350px;
 }
@@ -892,7 +673,7 @@ footer
   font-family: "Times New Roman", Times, serif;
   font-size: 1.2rem;
   text-transform: uppercase;
-  margin: 15px 0 30px 0;
+  margin-bottom: 15px;
   font-weight: 400;
   flex-shrink: 0;
 }
@@ -909,7 +690,7 @@ footer
   flex: 1; /* Para que nombre y email se repartan el ancho */
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px 10px;
+  margin-bottom: 20px 20px;
 }
 
 .form-group label {
@@ -957,50 +738,10 @@ footer
 }
 
 .send-btn {
-    background-color: #9E2A2B;
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-
-/*
-    
-
-
-
-
-*/
-.footer {
-  background-color: #0d0d0d;
-  padding: 40px;
-  color: #888;
-  font-size: 0.9rem;
-  /* Quitamos text-align: center porque ahora controlaremos la posición con Flexbox */
-  /* text-align: center; */ 
-}
-
-/* --- AQUÍ ESTÁ LA MAGIA --- */
-.footer .container {
-  display: flex;              /* Activa el modo flexible */
-  justify-content: space-between; /* Empuja el primer elemento al inicio y el último al final */
-  align-items: center;        /* Alinea verticalmente al centro */
-  width: 100%;                /* Asegura que ocupe todo el ancho */
-}
-
-.footer p {
-    margin: 0; /* Importante quitar el margen por defecto del párrafo para que quede alineado */
-}
-
-.footer a {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 1.5rem; /* Hacemos la flecha un poco más grande */
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
+  background-color: #9e2a2b;
   color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
