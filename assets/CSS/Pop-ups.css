@@ -297,3 +297,113 @@
 .type-tester-input textarea {
   font-family: "frenesi";
 }
+
+/* =========================================
+              FIX POPUP MÓVIL 
+   ========================================= */
+@media (max-width: 480px) {
+  
+  /* 1. EL FONDO OSCURO */
+  .modal-overlay {
+    align-items: center; /* Centramos verticalmente */
+    padding: 10px;       /* Margen de seguridad alrededor */
+  }
+
+  /* 2. LA TARJETA (CONTENEDOR) */
+  .card {
+    width: 100% !important;   /* Ancho completo */
+    height: 85vh !important;  /* Altura fija: 85% de la pantalla */
+    max-height: 85vh;
+    
+    display: flex;            /* Flexbox para ordenar hijos */
+    flex-direction: column;   /* Uno debajo del otro */
+    
+    padding: 0 !important;    /* Quitamos padding del borde para que la foto toque los lados */
+    border-radius: 15px;      /* Bordes redondeados modernos */
+    overflow: hidden;         /* Para que nada se salga de las esquinas */
+  }
+
+  /* 3. BOTÓN CERRAR (LA X) */
+  /* Al estar dentro de .card, lo posicionamos absoluto sobre la imagen */
+  .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 50; /* ¡IMPORTANTE! Por encima de la imagen */
+    
+    /* Diseño de burbuja para que se vea sobre cualquier foto */
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  /* 4. CABECERA (IMAGEN/VIDEO) */
+  .card-header {
+    width: 100%;
+    /* AQUÍ ESTÁ EL TRUCO: */
+    height: 35% !important; /* La imagen ocupa solo el 35% de la tarjeta */
+    min-height: 200px;      /* Mínimo de seguridad */
+    flex-shrink: 0;         /* Prohibido encogerse */
+    
+    margin: 0;              /* Quitamos márgenes */
+    border-radius: 0;       /* Recto para tocar los bordes */
+    position: relative;     /* Para posicionar las flechas dentro */
+  }
+
+  /* Aseguramos que la imagen/video llene ese hueco */
+  .card-header .media-content,
+  .card-header img,
+  .card-header video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* 5. FLECHAS DE NAVEGACIÓN (< >) */
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2); /* Sutil */
+    backdrop-filter: blur(2px);
+    font-size: 1.2rem;
+    color: #000;
+  }
+  .prev-btn { left: 10px; }
+  .next-btn { right: 10px; }
+
+  /* 6. EL CUERPO (TEXTO) - SCROLL INTERNO */
+  .card-body {
+    flex: 1;              /* Ocupa todo el espacio sobrante (el 65% restante) */
+    overflow-y: auto;     /* Activa el scroll SOLO AQUÍ */
+    padding: 20px;        /* Espacio para leer */
+    background-color: var(--popup-bg, #fff);
+  }
+
+  /* Ajustes de texto para móvil */
+  .card h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+  
+  .project-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding-bottom: 20px; /* Espacio extra al final para scroll cómodo */
+  }
+
+  /* 7. FOOTER (Si lo usas para iconos) */
+  .card-footer {
+    flex-shrink: 0; /* No se encoge */
+    padding: 10px 20px;
+    background-color: #f9f9f9; /* Diferencia visual sutil */
+  }
+}

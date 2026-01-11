@@ -887,7 +887,7 @@ footer
 /* --- CONTENEDOR PRINCIPAL --- */
 .parallax-stack {
   background-color: var(--bg-color); /* Fondo claro para contraste */
-  padding: 0px 40px 40px 40px;
+  padding: 0px 40px 0px 40px;
   width: 100%;
   /* No ponemos height, la altura la dan las imágenes apiladas */
 }
@@ -1075,12 +1075,41 @@ footer
     font-size: 0.9rem;
     cursor: pointer;
 }
+/*
 
+  pelusillas
+
+*/
+/* --- SECCIÓN MIS PELUSITAS --- */
+#pulusitas-section {
+  width: 100%;
+  position: relative;
+  z-index: 10; 
+  
+  background-color: var(--bg-color); 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Eliminamos márgenes extraños */
+  line-height: 0; 
+  padding: 0;
+  margin: 0;
+}
+
+#pulusitas-section img {
+  width: 100%;       /* Ocupa todo el ancho en móviles y portátiles */
+  max-width: 1400px; /* (Opcional) Limite para que en pantallas 4K no se vea gigante pixelada */
+  height: auto;      /* Mantiene la proporción perfecta, evita deformaciones */
+  display: block;    /* Elimina el pequeño espacio blanco que a veces sale debajo de las imágenes */
+  object-fit: cover;
+}
 
 /*
     
 
-
+footer
 
 
 */
@@ -1165,6 +1194,14 @@ footer
         padding-left: 40px;
         padding-right: 40px;
     }
+    .main-gallery-title {
+      font-size: 2.5rem; /* Reducimos de 4rem a 2.5rem para que quepa */
+      padding: 0px;
+      margin: 0px 0px 20px 0px; /* Un poco de margen abajo para que no se pegue al video */
+      word-wrap: break-word; /* Por seguridad */
+      padding-left: 20px; /* Alineado con el resto del contenido */
+    }
+
 }
 
 /* =========================================
@@ -1373,6 +1410,18 @@ footer
     /* Ajuste de márgenes globales */
     #hero { padding: 10px; padding-top: 80px; }
     section { padding: 40px 20px !important; }
+    #pulusitas-section {
+        padding: 0 !important; /* Fuerza a que la imagen toque los bordes del móvil */
+        margin: 0 !important;
+    }
+    .main-gallery-title {
+      font-size: 2.5rem; /* Reducimos de 4rem a 2.5rem para que quepa */
+      padding: 0px;
+      margin: 0px 0px 20px 0px; /* Un poco de margen abajo para que no se pegue al video */
+      word-wrap: break-word; /* Por seguridad */
+      padding-left: 20px; /* Alineado con el resto del contenido */
+    }
+
 }
 
 /* =========================================
@@ -1382,6 +1431,13 @@ footer
     #Titulo h1 { font-size: 15vw; } /* Evita scroll horizontal */
     .menu a { font-size: 1.2rem; }
     .about-header h2 { font-size: 2.8rem; }
+    .main-gallery-title {
+      font-size: 2rem; /* Reducimos de 4rem a 2.5rem para que quepa */
+      padding: 0px;
+      margin: 0px 0px 20px 0px; /* Un poco de margen abajo para que no se pegue al video */
+      word-wrap: break-word; /* Por seguridad */
+      padding-left: 20px; /* Alineado con el resto del contenido */
+    }
 }
 
 /* =========================================
@@ -1448,6 +1504,11 @@ footer
   }
   /* --- MÓVIL (900px) --- */
 @media (max-width: 900px) {
+
+    ::-webkit-scrollbar {
+      display: none;
+   }
+
     .hamburger { display: block; }
     .menu {
         position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
@@ -1492,10 +1553,36 @@ footer
     }
     .subMenuItems { display: none; } 
     .hero-date { margin: 0; text-align: left; font-size: 1.2rem; }
+    .method-value{
+      font-size: 0.6rem;
+    }
+
+    #main-gallery-title{
+      padding: 0px;
+      margin :0px;
+    }
   }
   @media (max-width: 1025px) {
     #subMenu{
       display: none;
+    }
+    .parallax-stack {
+        height: auto !important;
+        padding: 0 !important;
+        display: block;
+    }
+
+    /* 3. Ajuste de la imagen interna */
+    .sticky-img-container img {
+        height: 100%;
+        object-fit: cover;
+    }
+    .main-gallery-title {
+      font-size: 2.5rem; /* Reducimos de 4rem a 2.5rem para que quepa */
+      padding: 0px;
+      margin: 0px 0px 20px 0px; /* Un poco de margen abajo para que no se pegue al video */
+      word-wrap: break-word; /* Por seguridad */
+      padding-left: 20px; /* Alineado con el resto del contenido */
     }
   }
 

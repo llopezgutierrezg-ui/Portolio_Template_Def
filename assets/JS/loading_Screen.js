@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const palabras = ["WELCOME", "TO", "SY", "\"RAH'S", "PORTFOLIO"];
 
-  const tiempoLectura = 600;
-  const tiempoTransicion = 400;
+  const tiempoLectura = 200;
+  const tiempoTransicion = 200;
 
   let i = 0;
 
