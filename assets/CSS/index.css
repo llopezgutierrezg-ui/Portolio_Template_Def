@@ -630,6 +630,7 @@ projects
 .marquee-container {
     width: 100%;
     white-space: nowrap; /* Obliga al texto a estar en una sola línea */
+    overflow: hidden; /* Oculta el desbordamiento */
 }
 
 .marquee-track {
@@ -643,10 +644,6 @@ projects
         transform: translateX(0);
     }
     100% {
-        /* Movemos el track un 50% a la izquierda. 
-           Como tenemos 2 copias idénticas, al llegar al 50% 
-           la segunda copia está exactamente donde empezó la primera,
-           creando la ilusión de infinito. */
         transform: translateX(-50%);
     }
 }
