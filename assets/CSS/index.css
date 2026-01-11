@@ -290,36 +290,55 @@ img {
 /* --- 4. Submenú Inferior Izquierda (Flechas) --- */
 /* --- MODIFICAR ESTO --- */
 #subMenu {
-    position: absolute;
-    bottom: 40px;
-    left: 40px;
-    
-    /* AÑADIR ESTO PARA QUE OCUPE EL ANCHO Y ALINEE: */
-    right: 40px; /* Se estira hasta la derecha */
-    display: flex;
-    justify-content: space-between; /* Empuja la lista a la izq y la fecha a la der */
-    align-items: flex-start; /* IMPORTANTE: Alinea ambos elementos ARRIBA (altura de About Me) */
-    pointer-events: none; /* Para que la caja invisible no tape clicks en el centro */
+  display: grid;
+  /* Misma estructura de columnas que #Titulo */
+  grid-template-columns: 1fr auto; 
+  width: 100%;
+  
+  /* Alineación vertical al inicio para que la lista y la fecha arranquen arriba */
+  align-items: start; 
+  
+  /* Opcional: margenes para separar del título si hace falta */
+  margin-top: 0px; 
+  pointer-events: none; /* Para no bloquear clicks en el centro vacío */
 }
 
-.hero-date {
-    font-family: "Helvetica Neue Perso Roman", sans-serif;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-right: 300px;
-    margin-top: 10px; /* Ajusta este número si es necesario para clavar la línea visual */
+#subMenu .hero-date {
+  grid-column: 2;
+  
+  /* Alineación a la derecha de su celda */
+  justify-self: end;
+  
+  /* --- CLAVE DE LA ALINEACIÓN --- */
+  /* Usamos 240px (igual que el H3 del título) para que la fecha
+     caiga exactamente debajo de "PORTFOLIO" */
+  margin-right: 240px; 
+
+  /* Estilos de texto */
+  font-family: "Helvetica Neue Perso Roman", sans-serif;
+  font-weight: 700;
+  pointer-events: auto;
 }
 
-.subMenuItems {
+#subMenu .subMenuItems {
+  grid-column: 1;
+  
+  /* Reseteo básico de lista para que no tenga padding extraño */
   list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  /* Reactivamos clicks */
+  pointer-events: auto; 
+  
+  /* (Opcional) Si quieres que la lista tenga un margen izquierdo como el H1, añádelo aquí */
+  /* margin-left: ...px; */
 }
 
-.subMenuItems li {
+#subMenu .subMenuItems li {
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* Espacio entre items */
+  margin-bottom: 10px; /* Separación entre links */
 }
 
 .subMenuItems a {
@@ -1369,14 +1388,6 @@ footer
    PANTALLAS GRANDES (1920px+)
    ========================================= */
 @media (min-width: 1921px) {
-    body {
-        /* Centramos el contenido para que no se estire infinitamente */
-        max-width: 1800px;
-        margin: 0 auto;
-        border-left: 1px solid #222;
-        border-right: 1px solid #222;
-    }
-    
     #hero { height: 90vh; } /* Evita que el hero sea demasiado alto */
 }
 
@@ -1491,16 +1502,7 @@ footer
     
     /* 1. CONTENEDOR MAESTRO: Centra el contenido en pantallas anchas */
     /* Esto evita que el texto se vaya a los extremos en monitores grandes */
-    #about-section, 
-    #skills-section, 
-    #projects, 
-    #contact-section,
-    .parallax-stack {
-        max-width: 1600px; /* Ancho máximo de seguridad */
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
+  
 
     /* 2. HERO: Ajuste fino para que el título no toque los bordes en 1366px */
   #Titulo {
@@ -1513,32 +1515,45 @@ footer
   #subMenu {
     display: none;
   }
-
+  .card{
+    width: 500px;
+    }
   }
   @media (min-width: 1500px) {
-    
-    /* 1. CONTENEDOR MAESTRO: Centra el contenido en pantallas anchas */
-    /* Esto evita que el texto se vaya a los extremos en monitores grandes */
-    #about-section, 
-    #skills-section, 
-    #projects, 
-    #contact-section,
-    .parallax-stack {
-        max-width: 1600px; /* Ancho máximo de seguridad */
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-
     /* 2. HERO: Ajuste fino para que el título no toque los bordes en 1366px */
-  #Titulo {
+  #Titulo, #subMenu {
     max-width: 1400px;
     margin: 30 auto; /* Centrado perfecto */
   }
   #Titulo h1 {
     font-size: 15rem;
   }
+  .card{
+    width: 700px;
+  }
+  #subMenu {
+    display: grid;
 
+    grid-template-columns: 1fr auto; 
+    
+    align-items: start;
+    justify-content: normal;
+    margin: 30 auto; /* Centrado perfecto */
+  }
+  #subMenu .subMenuItems {
+    padding-left: 10px;
+  }
+
+#subMenu .hero-date {
+    grid-column: 2;
+    
+    justify-self: end;
+    margin-right: 240px; 
+    width: 110px; 
+    
+    text-align: left; 
+    display: block;
+}
   }
   /* =========================================
    NUEVO BOTÓN SCROLL DOWN (PILL)
