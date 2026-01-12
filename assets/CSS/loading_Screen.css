@@ -95,3 +95,9 @@ REVISAR
     transition: opacity 0.8s ease-out;
     pointer-events: none; /* Evita clicks mientras se va */
 }
+
+@media (max-width: 900px) {
+    .loading-top, .loading-bottom {
+        display: none;
+    }
+}

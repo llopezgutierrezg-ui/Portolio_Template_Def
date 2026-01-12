@@ -1336,7 +1336,7 @@ footer
     .screen-slide {
         height: auto !important;      /* Deja que la altura se ajuste al contenido */
         min-height: auto !important;  /* Evita alturas mínimas forzadas */
-        padding-bottom: 60px;         /* Un poco de aire al final de cada bloque */
+        padding-bottom: 20px;         /* Un poco de aire al final de cada bloque */
         gap: 15px;                    /* Reducimos el hueco entre imagen y texto */
     }
 
@@ -1393,7 +1393,6 @@ footer
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
-        border-bottom: 1px solid #ccc; /* Separador visual */
         padding-bottom: 20px;
     }
     
